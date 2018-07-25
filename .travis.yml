@@ -7,6 +7,6 @@ deploy:
   provider: heroku
   api_key:
     secure: u6CbI8MBZZP6dAqg7swewacD04DVJSK1yZlSknQ+NAQjT68nFX9JA3vut3ySbcGGTOwwoH+O4I1Xx42VZmA/HV3TEBQnho4vmV+rG9ZVqal7hTO5m00MAlSV0t6GINTwVFtMcToB5d6JXAffgh4SR0HP4ihxF31443PSPmamTsHfIDv5iNdzwbRuYeIJOyVVWhvC6tK4yoViW2Ln75zF2MWWPGntekv8xMhbJH0hoCAwqYCR9tT5ytHULnBMPUMLMzReoaU/FeUMsQxsSvXESFsbVwM9Fw/gBVoP+hBpOxR1LsTjpGlywpqBcW8JH/LW5hWo7qr0YrM2P9nHZl1li3D0I8NmBk8NF8KZlN5rRICWVuPrgYAy73VOjd7Ku93X4GipVcB1Lt28qbRUnLMHX+neo1sB6e1Pk1JTuLhyowVLI4/rRIdYALKQ+HmYOZRKYW/lj3EEfyMdLwp6GaY/KzPcnvs2JCj2hU54aE8nV9B1/QITgCO2sIamqJQUfpWVDh2ZZz3Sn8bEl2hSZpm31AZICrHYbTdqTVkfh+fOIyktF7eIdjhbIikA2Rxzx1YhwyxMLnPL6axzB6AHB9UmJRQDs5/XeDv3MEurD/JaV36a5EBsBgZl7+gou/0Hn6zC6tarCevsSWHxrpmNLZ7wZ/nb7IksUGlQFrH6Qc3BGzs=
-  app: mixer-hub-client-2
+  app: infinite-oasis-11868
   on:
     repo: LsK101/mixer-hub-client-2
