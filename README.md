@@ -1,8 +1,12 @@
 # MixerHub2
 
-It's MixerHub, but it's actually going to look aesthetically pleasing and be fun to use.
+MixerHub(1) was my first React project, and MixerHub2 is a complete rewrite on the front-end (and possibly some on the API) mainly with the following goals:
+-make it actually aesthetically pleasing to look at (color scheme)
+-make it easier to use (layout)
+-full redux implementation, keep all components stateless
+-keep the code and file tree neat and readable this time
 
-(Below is copied from MixerHub's readme) 
+(Below is copied from MixerHub's readme, to get an idea of the intended features) 
 
 MixerHub is a way to create, share, and discover new drink recipes.
 
