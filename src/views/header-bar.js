@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 
 import {changeCurrentUser,
@@ -154,7 +155,7 @@ export class App extends Component {
     const authToken = this.props.authToken;
     return (
       <div className="top-bar">
-          <img src={BannerLogo} className="banner-logo" />
+          <Link to="/" className="navbar-link"><img src={BannerLogo} className="banner-logo" /></Link>
           {authToken ?
             <span>
             <button className="top-bar-signout" href="#" onClick={this.logOut.bind(this)}>Log Out</button>
