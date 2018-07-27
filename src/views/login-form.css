@@ -16,10 +16,48 @@
 	padding: 20px;
 	top: 50%;
 	left: 50%;
-	margin-top: -146px;
-	margin-left: -107px;
-	border: 1px	solid white;
-	height: 292px;
-	width: 215px;
+	margin-top: -153px;
+	margin-left: -132px;
+	height: 306px;
+	width: 265px;
 	z-index: 5;
+	border: 1px	solid #00aeff;
+	border-radius: 3px;
+	clear: both;
+}
+/*
+.login-form-label {
+	color: #00aeff;
+}
+*/
+.login-form-username-input,
+.login-form-password-input {
+	font-size: 16px;
+	border: 1px solid #00aeff;
+	border-radius: 3px;
+	background-color: #232323;
+	color: white;
+	padding: 5px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.login-form-login-button,
+.login-form-cancel-button {
+	margin-top: 22px;
+	display: inline-block;
+	border-radius: 3px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 16px;
+	color: #00aeff;
+	background-color: transparent;
+	border: 1px solid #00aeff;
+	padding: 5px;
+}
+
+.login-form-login-button {
+	float: left;
+}
+
+.login-form-cancel-button {
+	float: right;
 }

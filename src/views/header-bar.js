@@ -94,10 +94,10 @@ export class App extends Component {
           <span className="top-bar-logo">MixerHub 2.0</span>
           {authToken ?
             <span>
-            <a className="top-bar-signout" href="#" onClick={this.logOut.bind(this)}>Log Out</a>
+            <button className="top-bar-signout" href="#" onClick={this.logOut.bind(this)}>Log Out</button>
             <span className="top-bar-welcome">Welcome, {currentUser}!</span>
             </span> :
-            <a className="top-bar-signin" href="#" onClick={this.showLoginPopup.bind(this)}>Log In</a>}
+            <button className="top-bar-signin" onClick={this.showLoginPopup.bind(this)}>Log In</button>}
             {this.props.showLogin ?
               <LoginForm
                 onSubmitLogin={values => this.getAuthToken(values)} 
