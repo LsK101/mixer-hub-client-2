@@ -2,8 +2,11 @@ import * as actions from '../actions';
 
 const initialState = {
 	currentUser: null,
+	currentFirstName: null,
 	authToken: null,
-	showLogin: false
+	showLogin: false,
+	showSignup: false,
+	showNavbar: false
 }
 
 export const mixerHubReducer = (state=initialState, action) => {
@@ -32,6 +35,11 @@ export const mixerHubReducer = (state=initialState, action) => {
 	else if (action.type === actions.SHOW_SIGNUP_POPUP) {
 		return Object.assign({}, state, {
 			showSignup: action.showSignup
+		});
+	}
+	else if (action.type === actions.TOGGLE_NAVBAR) {
+		return Object.assign({}, state, {
+			showNavbar: !action.toggleNavbar
 		});
 	}
 	return state;

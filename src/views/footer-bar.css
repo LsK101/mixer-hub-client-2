@@ -1,0 +1,42 @@
+#footer-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+  background-color: #232323;
+  transition: transform 200ms ease-in;
+}
+
+#footer-navbar.slide-in {
+	transform: translateY(209px);
+}
+
+#footer-navbar.slide-out {
+	transform: translateY(0px);
+}
+
+.hamburger-icon {
+  width: 188px;
+  display: inline-block;
+}
+
+.footer-navbar-list {
+  margin-top: 0px;
+  padding-left: 14px;
+}
+
+.footer-navbar-list li {
+  list-style: none;
+  display: block;
+  margin-top: 20px;
+  margin-left: 0px;
+}
+
+.navbar-link {
+  color: #00aeff;
+  text-decoration: none;
+}

@@ -21,3 +21,9 @@ export const showSignupPopup = showSignup => ({
 	type: 'SHOW_SIGNUP_POPUP',
 	showSignup
 });
+
+export const TOGGLE_NAVBAR = 'TOGGLE_NAVBAR';
+export const toggleNavbar = toggleNavbar => ({
+	type: 'TOGGLE_NAVBAR',
+	toggleNavbar
+})

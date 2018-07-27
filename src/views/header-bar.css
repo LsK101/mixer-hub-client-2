@@ -3,6 +3,7 @@
 	height: 50px;
 	line-height: 50px;
 	clear: both;
+	overflow: hidden;
 }
 
 .banner-logo {
