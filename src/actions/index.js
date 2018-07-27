@@ -9,3 +9,9 @@ export const setAuthToken = authToken => ({
 	type: 'SET_AUTH_TOKEN',
 	authToken
 });
+
+export const SHOW_LOGIN_POPUP = 'SHOW_LOGIN_POPUP';
+export const showLoginPopup = showLogin => ({
+	type: 'SHOW_LOGIN_POPUP',
+	showLogin
+});

@@ -1,0 +1,30 @@
+.top-bar {
+	background-color: #232323;
+	height: 50px;
+	line-height: 50px;
+	clear: both;
+}
+
+.top-bar-logo {
+	display: inline-block;
+	margin-left: 20px;
+	float: left;
+}
+
+.top-bar-welcome {
+	display: inline-block;
+	float: right;
+}
+
+.top-bar-signin,
+.top-bar-signout {
+	display: inline-block;
+	margin-right: 20px;
+	float: right;
+	color: #00aeff;
+	text-decoration: none;
+}
+
+.top-bar-signout {
+	margin-left: 10px;
+}
