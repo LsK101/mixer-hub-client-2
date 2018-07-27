@@ -9,6 +9,7 @@ import {changeCurrentUser,
 import {API_BASE_URL} from '../config';
 
 import './header-bar.css';
+import BannerLogo from '../images/logo-banner-trans.png';
 import LoginForm from './login-form';
 import SignupForm from './signup-form';
 
@@ -153,7 +154,7 @@ export class App extends Component {
     const authToken = this.props.authToken;
     return (
       <div className="top-bar">
-          <span className="top-bar-logo">MixerHub 2.0</span>
+          <img src={BannerLogo} className="banner-logo" />
           {authToken ?
             <span>
             <button className="top-bar-signout" href="#" onClick={this.logOut.bind(this)}>Log Out</button>

@@ -5,10 +5,12 @@
 	clear: both;
 }
 
-.top-bar-logo {
+.banner-logo {
 	display: inline-block;
+	margin-top: 4px;
 	margin-left: 20px;
 	float: left;
+	height: 40px;
 }
 
 .top-bar-welcome {
