@@ -15,3 +15,9 @@ export const showLoginPopup = showLogin => ({
 	type: 'SHOW_LOGIN_POPUP',
 	showLogin
 });
+
+export const SHOW_SIGNUP_POPUP = 'SHOW_SIGNUP_POPUP';
+export const showSignupPopup = showSignup => ({
+	type: 'SHOW_SIGNUP_POPUP',
+	showSignup
+});

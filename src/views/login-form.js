@@ -6,8 +6,8 @@ import './login-form.css';
 export class LoginForm extends Component {
   render() {
     return (
-      <div className="popup">
-        <div className="popup-inner">
+      <div className="login-popup">
+        <div className="login-popup-inner">
           <form
             onSubmit={this.props.handleSubmit(values => this.props.onSubmitLogin(values))}>
             <label className="login-form-label" htmlFor="username">Username</label>
@@ -21,7 +21,7 @@ export class LoginForm extends Component {
               name="password" id="password" type="password" component="input" />
             <br/>
             <button className="login-form-login-button" type="submit">Log In</button>
-            <button className="login-form-cancel-button" type="button" onClick={this.props.closePopup}>Cancel</button>
+            <button className="login-form-cancel-button" type="button" onClick={this.props.closeLoginPopup}>Cancel</button>
           </form>
         </div>
       </div>

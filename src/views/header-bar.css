@@ -17,7 +17,8 @@
 }
 
 .top-bar-signin,
-.top-bar-signout {
+.top-bar-signout,
+.top-bar-signup {
 	display: inline-block;
 	margin-right: 20px;
 	float: right;
