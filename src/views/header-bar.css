@@ -4,6 +4,9 @@
 	line-height: 50px;
 	clear: both;
 	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	top: 0;
 }
 
 .banner-logo {
