@@ -9,6 +9,7 @@
   margin: 0 auto;
   background-color: #232323;
   transition: transform 200ms ease-in;
+  width: 230px;
 }
 
 #footer-navbar.slide-in {
