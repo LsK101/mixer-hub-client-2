@@ -19,7 +19,7 @@ export class FooterBar extends Component {
     	<div id="footer-navbar" 
     		className={showNavbar ? 'slide-out' : 'slide-in'} 
     		onClick={this.toggleNavbar.bind(this)}>
-        	<img className="hamburger-icon" src={NavigationIcon} />
+        	<img className="hamburger-icon" src={NavigationIcon} alt="navigation icon"/>
         	<ul className="footer-navbar-list">
           		<li><Link to="/dashboard" className="navbar-link">Dashboard</Link></li>
           		<li><Link to="/browse" className="navbar-link">Browse Recipe Database</Link></li>
