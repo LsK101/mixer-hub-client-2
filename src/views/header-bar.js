@@ -8,6 +8,7 @@ import {changeCurrentUser,
         showSignupPopup} from '../actions';
 
 import './header-bar.css';
+import LoadingGif from '../images/loading.gif';
 import BannerLogo from '../images/logo-banner-trans.png';
 
 export class HeaderBar extends Component {
@@ -49,7 +50,9 @@ export class HeaderBar extends Component {
             </span> :
             <span>
               <button className="top-bar-signup" onClick={this.showSignupPopup.bind(this)}>Sign Up</button>
-              <button className="top-bar-signin" onClick={this.showLoginPopup.bind(this)}>Log In</button>
+              {this.props.loginLoading ? 
+                <img class="top-bar-loading" src={LoadingGif} alt="loading" /> :
+                <button className="top-bar-signin" onClick={this.showLoginPopup.bind(this)}>Log In</button> }
             </span> }
       </div>
     );
@@ -60,6 +63,7 @@ const mapStateToProps = state => ({
   currentUser: state.main.currentUser,
   currentFirstName: state.main.currentFirstName,
   authToken: state.main.authToken,
+  loginLoading: state.main.loginLoading
 });
 
 export default connect(mapStateToProps)(HeaderBar);

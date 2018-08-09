@@ -32,7 +32,7 @@ export class SignupForm extends Component {
               name="confirm" id="confirm" type="password" component="input" />
             <br/>
             {this.props.loading ? 
-              <img class="signup-loading" src={LoadingGif} /> :
+              <img class="signup-loading" src={LoadingGif} alt="loading" /> :
               <button className="signup-form-signup-button" type="submit">Sign Up</button> }
             <button className="signup-form-cancel-button" type="button" onClick={this.props.closeSignupPopup}>Cancel</button>
           </form>

@@ -41,3 +41,12 @@
 .top-bar-signout {
 	margin-left: 10px;
 }
+
+.top-bar-loading {
+	display: inline-block;
+	margin-right: 33px;
+	float: right;
+	height: 28px;
+	margin-top: 10px;
+	padding: 5px;
+}
