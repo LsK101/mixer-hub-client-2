@@ -60,3 +60,12 @@
 .login-form-cancel-button {
 	float: right;
 }
+
+.login-loading {
+	float: left;
+	height: 28px;
+	margin-top: 22px;
+	margin-left: 10px;
+	display: inline-block;
+	padding: 5px;
+}

@@ -26,4 +26,10 @@ export const TOGGLE_NAVBAR = 'TOGGLE_NAVBAR';
 export const toggleNavbar = toggleNavbar => ({
 	type: 'TOGGLE_NAVBAR',
 	toggleNavbar
-})
+});
+
+export const SET_LOGIN_LOADING = 'SET_LOGIN_LOADING';
+export const setLoginLoading = loginLoading => ({
+	type: 'SET_LOGIN_LOADING',
+	loginLoading
+});

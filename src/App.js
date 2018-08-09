@@ -6,7 +6,8 @@ import jwtDecode from 'jwt-decode';
 import {changeCurrentUser,
         setAuthToken,
         showLoginPopup,
-        showSignupPopup} from './actions';
+        showSignupPopup,
+        setLoginLoading} from './actions';
 import {API_BASE_URL} from './config';
 
 import './App.css';
@@ -20,6 +21,7 @@ export class App extends Component {
   componentWillMount() {
     let localToken = localStorage.getItem('authToken');
     if (localToken !== null) {
+      this.setLoginLoading(true);
       return fetch(`${API_BASE_URL}/auth/refresh`, {
         method: 'POST',
         headers: {
@@ -33,9 +35,11 @@ export class App extends Component {
         this.setAuthToken(authToken);
         this.changeCurrentUser(decodedToken);
         this.storeAuthInfo(authToken,decodedToken.username,decodedToken.firstName);
+        this.setLoginLoading(false);
       })
       .catch(err => {
         this.logOut();
+        this.setLoginLoading(false);
         alert('Session expired. Please log in again.');
       });
     }
@@ -57,7 +61,12 @@ export class App extends Component {
     this.props.dispatch(setAuthToken(authToken));
   }
 
+  setLoginLoading(boolean) {
+    this.props.dispatch(setLoginLoading(boolean));
+  }
+
   getAuthToken(values) {
+    this.setLoginLoading(true);
     return fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: {
@@ -78,8 +87,12 @@ export class App extends Component {
       this.storeAuthInfo(authToken,decodedToken.username,decodedToken.firstName);
       this.hideLoginPopup();
       this.hideSignupPopup();
+      this.setLoginLoading(false);
     })
-    .catch(() => alert('Incorrect username or password.'));
+    .catch(() => {
+      this.setLoginLoading(false);
+      alert('Incorrect username or password.')
+    });
   }
 
   storeAuthInfo(authToken,username,firstName) {
@@ -152,7 +165,8 @@ export class App extends Component {
           {this.props.showLogin ?
               <LoginForm
                 onSubmitLogin={values => this.getAuthToken(values)} 
-                closeLoginPopup={this.hideLoginPopup.bind(this)} /> :
+                closeLoginPopup={this.hideLoginPopup.bind(this)}
+                loading={this.props.loginLoading} /> :
                 null}
           {this.props.showSignup ?
               <SignupForm
@@ -170,7 +184,8 @@ export class App extends Component {
 
 const mapStateToProps = state => ({
   showLogin: state.main.showLogin,
-  showSignup: state.main.showSignup
+  showSignup: state.main.showSignup,
+  loginLoading: state.main.loginLoading
 });
 
 export default connect(mapStateToProps)(App);

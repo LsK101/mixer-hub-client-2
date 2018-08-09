@@ -6,7 +6,8 @@ const initialState = {
 	authToken: null,
 	showLogin: false,
 	showSignup: false,
-	showNavbar: false
+	showNavbar: false,
+	loginLoading: false
 }
 
 export const mixerHubReducer = (state=initialState, action) => {
@@ -40,6 +41,11 @@ export const mixerHubReducer = (state=initialState, action) => {
 	else if (action.type === actions.TOGGLE_NAVBAR) {
 		return Object.assign({}, state, {
 			showNavbar: !action.toggleNavbar
+		});
+	}
+	else if (action.type === actions.SET_LOGIN_LOADING) {
+		return Object.assign({}, state, {
+			loginLoading: action.loginLoading
 		});
 	}
 	return state;
