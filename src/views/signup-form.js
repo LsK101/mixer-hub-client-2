@@ -14,22 +14,22 @@ export class SignupForm extends Component {
             <label className="signup-form-label" htmlFor="firstname">First Name</label>
             <br/>
             <Field className="signup-form-username-input" 
-              name="firstname" id="firstname" type="text" component="input" />
+              name="firstname" id="firstname" type="text" component="input" required />
             <br/>
             <label className="signup-form-label" htmlFor="username">New Username</label>
             <br/>
             <Field className="signup-form-username-input" 
-              name="username" id="username" type="text" component="input" />
+              name="username" id="username" type="text" component="input" required />
             <br/>
             <label className="signup-form-label" htmlFor="password">New Password</label>
             <br/>
             <Field className="signup-form-password-input"
-              name="password" id="password" type="password" component="input" />
+              name="password" id="password" type="password" component="input" required />
             <br/>
             <label className="signup-form-label" htmlFor="confirm">Confirm Password</label>
             <br/>
             <Field className="signup-form-password-input"
-              name="confirm" id="confirm" type="password" component="input" />
+              name="confirm" id="confirm" type="password" component="input" required />
             <br/>
             {this.props.loading ? 
               <img class="signup-loading" src={LoadingGif} alt="loading" /> :
