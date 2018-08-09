@@ -33,3 +33,9 @@ export const setLoginLoading = loginLoading => ({
 	type: 'SET_LOGIN_LOADING',
 	loginLoading
 });
+
+export const SET_SIGNUP_LOADING = 'SET_SIGNUP_LOADING';
+export const setSignupLoading = signupLoading => ({
+	type: 'SET_SIGNUP_LOADING',
+	signupLoading
+});

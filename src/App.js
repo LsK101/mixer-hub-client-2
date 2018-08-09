@@ -7,7 +7,8 @@ import {changeCurrentUser,
         setAuthToken,
         showLoginPopup,
         showSignupPopup,
-        setLoginLoading} from './actions';
+        setLoginLoading,
+        setSignupLoading} from './actions';
 import {API_BASE_URL} from './config';
 
 import './App.css';
@@ -65,6 +66,10 @@ export class App extends Component {
     this.props.dispatch(setLoginLoading(boolean));
   }
 
+  setSignupLoading(boolean) {
+    this.props.dispatch(setSignupLoading(boolean));
+  }
+
   getAuthToken(values) {
     this.setLoginLoading(true);
     return fetch(`${API_BASE_URL}/auth/login`, {
@@ -88,9 +93,11 @@ export class App extends Component {
       this.hideLoginPopup();
       this.hideSignupPopup();
       this.setLoginLoading(false);
+      this.setSignupLoading(false);
     })
     .catch(() => {
       this.setLoginLoading(false);
+      this.setSignupLoading(false);
       alert('Incorrect username or password.')
     });
   }
@@ -131,6 +138,7 @@ export class App extends Component {
         password !== password.trim()) {
       return alert('Inputs cannot begin or end with whitespace')
     }
+    this.setSignupLoading(true);
     fetch(`${API_BASE_URL}/users`, {
       method: 'POST',
       headers: {
@@ -153,6 +161,7 @@ export class App extends Component {
       this.getAuthToken(values);
     })
     .catch(err => {
+      this.setSignupLoading(false);
       return alert('Username already taken');
     });
   }
@@ -171,7 +180,8 @@ export class App extends Component {
           {this.props.showSignup ?
               <SignupForm
                 onSubmitSignup={values => this.sendSignupCredentials(values)} 
-                closeSignupPopup={this.hideSignupPopup.bind(this)} /> :
+                closeSignupPopup={this.hideSignupPopup.bind(this)}
+                loading={this.props.signupLoading} /> :
                 null}
           <Route path="/" component={FooterBar} />
 
@@ -185,7 +195,8 @@ export class App extends Component {
 const mapStateToProps = state => ({
   showLogin: state.main.showLogin,
   showSignup: state.main.showSignup,
-  loginLoading: state.main.loginLoading
+  loginLoading: state.main.loginLoading,
+  signupLoading: state.main.signupLoading
 });
 
 export default connect(mapStateToProps)(App);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {reduxForm, Field} from 'redux-form'
 
 import './signup-form.css';
+import LoadingGif from '../images/loading.gif';
 
 export class SignupForm extends Component {
   render() {
@@ -30,7 +31,9 @@ export class SignupForm extends Component {
             <Field className="signup-form-password-input"
               name="confirm" id="confirm" type="password" component="input" />
             <br/>
-            <button className="signup-form-signup-button" type="submit">Sign Up</button>
+            {this.props.loading ? 
+              <img class="signup-loading" src={LoadingGif} /> :
+              <button className="signup-form-signup-button" type="submit">Sign Up</button> }
             <button className="signup-form-cancel-button" type="button" onClick={this.props.closeSignupPopup}>Cancel</button>
           </form>
         </div>

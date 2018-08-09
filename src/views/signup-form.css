@@ -60,3 +60,12 @@
 .signup-form-cancel-button {
 	float: right;
 }
+
+.signup-loading {
+	float: left;
+	height: 28px;
+	margin-top: 22px;
+	margin-left: 10px;
+	display: inline-block;
+	padding: 5px;
+}

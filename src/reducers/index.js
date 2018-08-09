@@ -7,7 +7,8 @@ const initialState = {
 	showLogin: false,
 	showSignup: false,
 	showNavbar: false,
-	loginLoading: false
+	loginLoading: false,
+	signupLoading: false
 }
 
 export const mixerHubReducer = (state=initialState, action) => {
@@ -46,6 +47,11 @@ export const mixerHubReducer = (state=initialState, action) => {
 	else if (action.type === actions.SET_LOGIN_LOADING) {
 		return Object.assign({}, state, {
 			loginLoading: action.loginLoading
+		});
+	}
+	else if (action.type === actions.SET_SIGNUP_LOADING) {
+		return Object.assign({}, state, {
+			signupLoading: action.signupLoading
 		});
 	}
 	return state;
