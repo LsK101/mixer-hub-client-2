@@ -17,6 +17,11 @@ import FooterBar from './views/footer-bar';
 import LoginForm from './views/login-form';
 import SignupForm from './views/signup-form';
 import Home from './views/home';
+import Dashboard from './views/dashboard';
+import BrowseRecipes from './views/browse-recipes';
+import CreateRecipe from './views/create-recipe';
+import ManageRecipes from './views/manage-recipes';
+import ABVCalc from './views/abvcalc';
 
 export class App extends Component {
   componentWillMount() {
@@ -186,6 +191,11 @@ export class App extends Component {
           <Route path="/" component={FooterBar} />
 
           <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/browse" component={BrowseRecipes} />
+          <Route exact path="/create" component={CreateRecipe} />
+          <Route exact path="/manage" component={ManageRecipes} />
+          <Route exact path="/abvcalc" component={ABVCalc} />
         </main>
       </Router>
     );
