@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {toggleNavbar} from '../actions';
+import {toggleNavbar} from '../actions/auth';
 
 import './footer-bar.css';
 import NavigationIcon from '../images/hamburger-with-text.png';
@@ -33,7 +33,7 @@ export class FooterBar extends Component {
 }
 
 const mapStateToProps = state => ({
-	showNavbar: state.main.showNavbar
+	showNavbar: state.auth.showNavbar
 });
 
 export default connect(mapStateToProps)(FooterBar);

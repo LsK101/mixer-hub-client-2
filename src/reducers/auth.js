@@ -1,4 +1,4 @@
-import * as actions from '../actions';
+import * as actions from '../actions/auth';
 
 const initialState = {
 	currentUser: null,
@@ -11,7 +11,7 @@ const initialState = {
 	signupLoading: false
 }
 
-export const mixerHubReducer = (state=initialState, action) => {
+export const authReducer = (state=initialState, action) => {
 	if (action.type === actions.CHANGE_CURRENT_USER && action.user !== null) {
 		return Object.assign({}, state, {
 			currentUser: action.user.username,

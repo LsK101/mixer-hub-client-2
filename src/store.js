@@ -1,9 +1,9 @@
 import {createStore, combineReducers} from 'redux';
-import {mixerHubReducer} from './reducers';
+import {authReducer} from './reducers/auth';
 import {reducer as formReducer} from 'redux-form';
 export default createStore(
 	combineReducers({
-		main: mixerHubReducer,
+		auth: authReducer,
 		form: formReducer
 	})
 );

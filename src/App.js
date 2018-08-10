@@ -8,7 +8,7 @@ import {changeCurrentUser,
         showLoginPopup,
         showSignupPopup,
         setLoginLoading,
-        setSignupLoading} from './actions';
+        setSignupLoading} from './actions/auth';
 import {API_BASE_URL} from './config';
 
 import './App.css';
@@ -203,10 +203,10 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  showLogin: state.main.showLogin,
-  showSignup: state.main.showSignup,
-  loginLoading: state.main.loginLoading,
-  signupLoading: state.main.signupLoading
+  showLogin: state.auth.showLogin,
+  showSignup: state.auth.showSignup,
+  loginLoading: state.auth.loginLoading,
+  signupLoading: state.auth.signupLoading
 });
 
 export default connect(mapStateToProps)(App);

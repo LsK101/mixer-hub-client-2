@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import {changeCurrentUser,
         setAuthToken,
         showLoginPopup,
-        showSignupPopup} from '../actions';
+        showSignupPopup} from '../actions/auth';
 
 import './header-bar.css';
 import LoadingGif from '../images/loading.gif';
@@ -62,10 +62,10 @@ export class HeaderBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.main.currentUser,
-  currentFirstName: state.main.currentFirstName,
-  authToken: state.main.authToken,
-  loginLoading: state.main.loginLoading
+  currentUser: state.auth.currentUser,
+  currentFirstName: state.auth.currentFirstName,
+  authToken: state.auth.authToken,
+  loginLoading: state.auth.loginLoading
 });
 
 export default connect(mapStateToProps)(HeaderBar);
