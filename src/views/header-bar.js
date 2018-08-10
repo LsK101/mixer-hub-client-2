@@ -49,10 +49,12 @@ export class HeaderBar extends Component {
             <span className="top-bar-welcome">Welcome, {currentFirstName}!</span>
             </span> :
             <span>
-              <button className="top-bar-signup" onClick={this.showSignupPopup.bind(this)}>Sign Up</button>
               {this.props.loginLoading ? 
-                <img class="top-bar-loading" src={LoadingGif} alt="loading" /> :
-                <button className="top-bar-signin" onClick={this.showLoginPopup.bind(this)}>Log In</button> }
+                <img className="top-bar-loading" src={LoadingGif} alt="loading" /> :
+                <span>
+                <button className="top-bar-signup" onClick={this.showSignupPopup.bind(this)}>Sign Up</button>
+                <button className="top-bar-signin" onClick={this.showLoginPopup.bind(this)}>Log In</button> 
+                </span> }
             </span> }
       </div>
     );

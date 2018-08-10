@@ -22,7 +22,7 @@ export class LoginForm extends Component {
               name="password" id="password" type="password" component="input" required/>
             <br/>
             {this.props.loading ?
-              <img class="login-loading" src={LoadingGif} alt="loading" /> :
+              <img className="login-loading" src={LoadingGif} alt="loading" /> :
               <button className="login-form-login-button" type="submit">Log In</button> }
             <button className="login-form-cancel-button" type="button" onClick={this.props.closeLoginPopup}>Cancel</button>
           </form>
