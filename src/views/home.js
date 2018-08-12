@@ -45,6 +45,15 @@ export default class Home extends Component {
         </div>
       </div>
 
+      <div className="row">
+        <div className="col-12">
+          <h2>Updates</h2>
+          <span><i>08/11/2018</i> - Quick ABV Calculator (Simple Mode) now functional.</span>
+          <h2>To Do</h2>
+          <span>-Add "exact measurements" mode to Quick ABV Calculator</span>
+        </div>
+      </div>
+
       </div>
     );
   }
