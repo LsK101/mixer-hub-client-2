@@ -14,12 +14,12 @@ export class LoginForm extends Component {
             <label className="login-form-label" htmlFor="username">Username</label>
             <br/>
             <Field className="login-form-username-input" 
-              name="username" id="username" type="text" component="input" required/>
+              name="username" id="username" type="text" component="input" required />
             <br/>
             <label className="login-form-label" htmlFor="password">Password</label>
             <br/>
             <Field className="login-form-password-input"
-              name="password" id="password" type="password" component="input" required/>
+              name="password" id="password" type="password" component="input" required />
             <br/>
             {this.props.loading ?
               <img className="login-loading" src={LoadingGif} alt="loading" /> :

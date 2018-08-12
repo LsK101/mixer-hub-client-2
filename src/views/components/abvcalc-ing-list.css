@@ -1,3 +1,8 @@
+.abvcalc-ing-list-ing {
+	border: 1px solid #00aeff;
+	border-radius: 3px;
+}
+
 .abvcalc-ing-list-delete-button {
 	margin-top: 10px;
 	margin-right: 10px;
@@ -9,4 +14,12 @@
 	background-color: transparent;
 	border: 1px solid #00aeff;
 	padding: 3px;
+}
+
+.abvcalc-ing-list-ul {
+	list-style: none;
+}
+
+.abvcalc-ing-list-ul li {
+	margin-top: 5px;
 }

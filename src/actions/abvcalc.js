@@ -21,3 +21,8 @@ export const deleteIngredient = index => ({
 	type: 'DELETE_INGREDIENT',
 	index
 });
+
+export const CLEAR_INGREDIENTS = 'CLEAR_INGREDIENTS';
+export const clearIngredients = () => ({
+	type: 'CLEAR_INGREDIENTS'
+});

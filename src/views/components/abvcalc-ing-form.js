@@ -11,15 +11,20 @@ export class ABVCalcIngredientForm extends Component {
         <div className="abvcalc-ing-popup-inner">
           <form
             onSubmit={this.props.handleSubmit(values => this.props.addIngredient(values))}>
-            <label className="abvcalc-ing-label" htmlFor="abv">Ingredient ABV (%)</label>
+            <label className="abvcalc-ing-label" htmlFor="ingredient">Ingredient Name</label>
+            <br/>
+            <Field className="abvcalc-ing-name-input" 
+              name="ingredient" id="ingredient" type="text" component="input" required />
+            <br/>
+            <label className="abvcalc-ing-label" htmlFor="abv">ABV (%)</label>
             <br/>
             <Field className="abvcalc-ing-abv-input" 
-              name="abv" id="abv" type="number" component="input" required/>
+              name="abv" id="abv" type="number" component="input" required />
             <br/>
             <label className="abvcalc-ing-label" htmlFor="parts">Parts In Mixture</label>
             <br/>
             <Field className="abvcalc-ing-parts-input"
-              name="parts" id="parts" type="number" component="input" required/>
+              name="parts" id="parts" type="number" component="input" required />
             <br/>
             {this.props.loading ?
               <img className="abvcalc-ing-loading" src={LoadingGif} alt="loading" /> :

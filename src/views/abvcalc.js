@@ -7,7 +7,8 @@ import ABVCalcIngredientForm from './components/abvcalc-ing-form';
 
 import {setNewIngredientPopup,
         setNewIngredientPopupLoading,
-        addNewIngredient} from '../actions/abvcalc.js'
+        addNewIngredient,
+        clearIngredients} from '../actions/abvcalc.js'
 
 export class ABVCalc extends Component {
 
@@ -24,6 +25,10 @@ export class ABVCalc extends Component {
     this.props.dispatch(addNewIngredient(values));
     this.props.dispatch(setNewIngredientPopup(false));
     this.props.dispatch(setNewIngredientPopupLoading(false));
+  }
+
+  clearIngredients() {
+    this.props.dispatch(clearIngredients());
   }
 
   render() {
@@ -48,10 +53,14 @@ export class ABVCalc extends Component {
           null }
         <h1>ABV Calculator</h1>
         {this.props.ingredients.length === 0 ?
-          <span>ABV: (No Ingredients Added)</span> :
-          <span>ABV: {ABV}%</span> }
+          <span>Mixture ABV: (No Ingredients Added)</span> :
+          <span>Mixture ABV: {ABV}%</span> }
+        <br/>
         <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
           Add Ingredient
+        </button>
+        <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+          Clear
         </button>
         <br/>
         <ABVCalcIngredientsList />

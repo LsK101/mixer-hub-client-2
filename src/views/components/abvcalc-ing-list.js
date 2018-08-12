@@ -13,15 +13,21 @@ export class ABVCalcIngredientsList extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div>
 
        {this.props.ingredients.map((ingredient,index) => {
         let ingredientABV = parseFloat(ingredient.abv).toFixed(2);
         let parts = parseFloat(ingredient.parts).toFixed(2);
-        return <div key={index}>
+        let ingredientName = ingredient.ingredient;
+        return <div key={index} className="abvcalc-ing-list-ing col-6">
                 <button className="abvcalc-ing-list-delete-button"
                   onClick={this.deleteIngredient.bind(this,{index})}>X</button>
-                <span>{index+1}. ABV: {ingredientABV}% Parts: {parts}</span>
+                <span>Ingredient #{index+1}:</span>
+                <ul className="abvcalc-ing-list-ul">
+                <li>{ingredientName}</li>
+                <li>{ingredientABV}% ABV</li>
+                <li>{parts} Parts</li>
+                </ul>
               </div>
        })}
 
