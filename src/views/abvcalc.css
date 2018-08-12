@@ -13,3 +13,8 @@
 	margin-right: 15px;
 	margin-bottom: 15px;
 }
+
+.abvcalc-total-volume-list li {
+	list-style: none;
+	margin: 3px;
+}
