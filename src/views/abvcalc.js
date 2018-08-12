@@ -34,6 +34,9 @@ export class ABVCalc extends Component {
 
   addIngredient(values) {
     let ingredient = values;
+    if (ingredient.abv < 0 || ingredient.abv > 100) {
+      return alert('ABV must be between 0 and 100');
+    }
     if (ingredient.measurement) {
       let converted;
       if (ingredient.measurement === "Milliliters (mL)") {
