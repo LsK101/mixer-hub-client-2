@@ -1,6 +1,7 @@
 import * as actions from '../actions/abvcalc';
 
 const initialState = {
+  simpleMode: true,
 	showNewIngredientPopup: false,
   addIngredientLoading: false,
   ingredients: []
@@ -29,6 +30,12 @@ export const abvCalcReducer = (state=initialState, action) => {
   }
   else if (action.type === actions.CLEAR_INGREDIENTS) {
     return Object.assign({}, state, {
+      ingredients: []
+    });
+  }
+  else if (action.type === actions.TOGGLE_SIMPLE_MODE) {
+    return Object.assign({}, state, {
+      simpleMode: action.boolean,
       ingredients: []
     });
   }

@@ -8,7 +8,8 @@ import ABVCalcIngredientForm from './components/abvcalc-ing-form';
 import {setNewIngredientPopup,
         setNewIngredientPopupLoading,
         addNewIngredient,
-        clearIngredients} from '../actions/abvcalc.js'
+        clearIngredients,
+        toggleSimpleMode} from '../actions/abvcalc.js'
 
 export class ABVCalc extends Component {
 
@@ -31,6 +32,10 @@ export class ABVCalc extends Component {
     this.props.dispatch(clearIngredients());
   }
 
+  toggleSimpleMode(boolean) {
+    this.props.dispatch(toggleSimpleMode(boolean));
+  }
+
   render() {
     let ingredients = this.props.ingredients;
     let totalAlcohol = 0;
@@ -45,31 +50,53 @@ export class ABVCalc extends Component {
     }
     return (
       <div className="row">
-        {this.props.showNewIngredientPopup ?
-          <ABVCalcIngredientForm 
-            loading={this.props.addIngredientLoading}
-            addIngredient={values => this.addIngredient(values)} 
-            closePopup={this.hideIngredientPopup.bind(this)} /> :
-          null }
         <h1>ABV Calculator</h1>
-        {this.props.ingredients.length === 0 ?
-          <span>Mixture ABV: (No Ingredients Added)</span> :
-          <span>Mixture ABV: {ABV}%</span> }
-        <br/>
-        <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
-          Add Ingredient
-        </button>
-        <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-          Clear
-        </button>
-        <br/>
-        <ABVCalcIngredientsList />
+        {this.props.simpleMode ? // CONDITIONAL: PARTS MEASUREMENT MODE BEGINS HERE
+          <div>
+            {this.props.showNewIngredientPopup ? // CONDITIONAL: INGREDIENT POPUP IF STATEMENT
+              <ABVCalcIngredientForm 
+                loading={this.props.addIngredientLoading}
+                addIngredient={values => this.addIngredient(values)} 
+                closePopup={this.hideIngredientPopup.bind(this)} /> :
+              null }
+            <span>Parts Measurements:</span>
+            <br/>
+            <span>Ingredients measured by parts.</span>
+            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,false)}>
+              Switch To Exact Measurements
+            </button>
+            <br/><br/>
+            {this.props.ingredients.length === 0 ?
+              <b>Mixture ABV: N/A</b> :
+              <b>Mixture ABV: {ABV}%</b> }
+            <br/>
+            <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
+              Add Ingredient
+            </button>
+            <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+              Clear
+            </button>
+            <br/>
+            <ABVCalcIngredientsList />
+          </div> : // CONDITIONAL: EXACT MEASUREMENT MODE BEGINS HERE
+          <div>
+            <span>Exact Measurements:</span>
+            <br/>
+            <span>Ingredients measured by mL, fl oz, etc.</span>
+            <br/>
+            <span>(Coming soon!)</span>
+            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,true)}>
+              Switch To Parts Measurements
+            </button>
+          </div> }
+
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  simpleMode: state.abvcalc.simpleMode,
   showNewIngredientPopup: state.abvcalc.showNewIngredientPopup,
   addIngredientLoading: state.abvcalc.addIngredientLoading,
   ingredients: state.abvcalc.ingredients

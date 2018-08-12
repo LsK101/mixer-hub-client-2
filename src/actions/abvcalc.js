@@ -1,3 +1,9 @@
+export const TOGGLE_SIMPLE_MODE = 'TOGGLE_SIMPLE_MODE';
+export const toggleSimpleMode = boolean => ({
+	type: 'TOGGLE_SIMPLE_MODE',
+	boolean
+});
+
 export const SET_NEW_INGREDIENT_POPUP = 'SET_NEW_INGREDIENT_POPUP';
 export const setNewIngredientPopup = boolean => ({
 	type: 'SET_NEW_INGREDIENT_POPUP',
