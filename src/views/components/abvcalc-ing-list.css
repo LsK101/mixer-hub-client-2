@@ -1,11 +1,12 @@
-.abvcalc-add-ing-button {
-	display: block;
+.abvcalc-ing-list-delete-button {
+	margin-top: 10px;
+	margin-right: 10px;
+	display: inline-block;
 	border-radius: 3px;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 16px;
 	color: #00aeff;
 	background-color: transparent;
 	border: 1px solid #00aeff;
-	padding: 5px;
-	margin-top: 15px;
+	padding: 3px;
 }

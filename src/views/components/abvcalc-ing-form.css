@@ -1,0 +1,71 @@
+.abvcalc-ing-popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: 3;
+}
+
+.abvcalc-ing-popup-inner {
+	position: absolute;
+	padding: 20px;
+	top: 50%;
+	left: 50%;
+	margin-top: -156px;
+	margin-left: -132px;
+	height: 312px;
+	width: 265px;
+	z-index: 5;
+	border: 1px	solid #00aeff;
+	border-radius: 3px;
+	clear: both;
+	background-color: #232323;
+}
+
+.abvcalc-ing-abv-input,
+.abvcalc-ing-parts-input {
+	font-size: 16px;
+	border: 1px solid #00aeff;
+	border-radius: 3px;
+	background-color: #353535;
+	color: white;
+	padding: 5px;
+	font-family: 'Ubuntu', sans-serif;
+	margin-top: 28px;
+	margin-bottom: 28px;
+}
+
+.abvcalc-ing-add-button,
+.abvcalc-ing-cancel-button {
+	margin-top: 22px;
+	display: inline-block;
+	border-radius: 3px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 16px;
+	color: #00aeff;
+	background-color: transparent;
+	border: 1px solid #00aeff;
+	padding: 5px;
+}
+
+.abvcalc-ing-add-button {
+	float: left;
+}
+
+.abvcalc-ing-cancel-button {
+	float: right;
+}
+
+.abvcalc-ing-loading {
+	float: left;
+	height: 28px;
+	margin-top: 22px;
+	margin-left: 10px;
+	display: inline-block;
+	padding: 5px;
+}
