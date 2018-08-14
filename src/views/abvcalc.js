@@ -102,7 +102,8 @@ export class ABVCalc extends Component {
     let totalPartsgal = (totalParts / 3785.41).toFixed(2);
     return (
       <div className="row">
-        <h1>ABV Calculator</h1>
+        <h1>Quick ABV Calculator</h1>
+        <h3>Use this tool to quickly calculate the alcohol by volume of a mixture.</h3>
         {this.props.simpleMode ? // CONDITIONAL: PARTS MEASUREMENT MODE BEGINS HERE
           <div>
             {this.props.showNewIngredientPopup ? // CONDITIONAL: INGREDIENT POPUP IF STATEMENT
@@ -111,17 +112,13 @@ export class ABVCalc extends Component {
                 addIngredient={values => this.addIngredient(values)} 
                 closePopup={this.hideIngredientPopup.bind(this)} /> :
               null }
-            <span>Parts Measurements:</span>
-            <br/>
-            <span>Ingredients measured by parts.</span>
-            <br/>
             <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,false)}>
               Switch To Exact Measurements
             </button>
-            <br/><br/>
-            {this.props.ingredients.length === 0 ?
-              <span>Mixture ABV: N/A</span> :
-              <span>Mixture ABV: {ABV}%</span> }
+            <br/>
+            <b>Mode: Parts Measurements</b>
+            <br/>
+            <span>Ingredients measured by parts.</span>
             <br/>
             <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
               Add Ingredient
@@ -130,6 +127,10 @@ export class ABVCalc extends Component {
               Clear
             </button>
             <br/>
+            {this.props.ingredients.length === 0 ?
+              <span>Mixture ABV: N/A</span> :
+              <span>Mixture ABV: {ABV}%</span> }
+            <br/><br/>
             <ABVCalcIngredientsList />
           </div> : // CONDITIONAL: EXACT MEASUREMENT MODE BEGINS HERE
           <div>
@@ -139,19 +140,25 @@ export class ABVCalc extends Component {
                 addIngredient={values => this.addIngredient(values)} 
                 closePopup={this.hideIngredientPopupExact.bind(this)} /> :
               null }
-            <span>Exact Measurements:</span>
-            <br/>
-            <span>Ingredients measured by mL, fl oz, etc.</span>
-            <br/>
             <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,true)}>
               Switch To Parts Measurements
             </button>
-            <br/><br/>
+            <br/>
+            <b>Mode: Exact Measurements</b>
+            <br/>
+            <span>Ingredients measured by mL, fl oz, etc.</span>
+            <br/>
+            <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
+              Add Ingredient
+            </button>
+            <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+              Clear
+            </button>
             {this.props.ingredients.length === 0 ?
               <div>
                 <span>Mixture ABV: N/A</span>
                 <br/><br/>
-                <span>Total Volume (All Units):</span>
+                <span>Total Mixture Volume Conversions:</span>
                 <ul className="abvcalc-total-volume-list">
                   <li>N/A milliliters (mL)</li>
                   <li>N/A liters (L)</li>
@@ -166,7 +173,7 @@ export class ABVCalc extends Component {
               <div>
                 <span>Mixture ABV: {ABV}%</span>
                 <br/><br/>
-                <span>Total Volume (All Units):</span>
+                <span>Total Mixture Volume Conversions:</span>
                 <ul className="abvcalc-total-volume-list">
                   <li>{totalPartsmL} milliliters (mL)</li>
                   <li>{totalPartsL} liters (L)</li>
@@ -178,13 +185,6 @@ export class ABVCalc extends Component {
                   <li>{totalPartsgal} gallons (gal)</li>
                 </ul>
               </div> }
-            <br/>
-            <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
-              Add Ingredient
-            </button>
-            <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-              Clear
-            </button>
             <br/>
             <ABVCalcIngredientsListExact />
           </div> }
