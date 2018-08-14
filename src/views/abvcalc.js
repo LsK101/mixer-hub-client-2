@@ -39,28 +39,28 @@ export class ABVCalc extends Component {
     }
     if (ingredient.measurement) {
       let converted;
-      if (ingredient.measurement === "Milliliters (mL)") {
+      if (ingredient.measurement === "milliliters (mL)") {
         converted = ingredient.amount;
       }
-      else if (ingredient.measurement === "Liters (L)") {
+      else if (ingredient.measurement === "liters (L)") {
         converted = ingredient.amount * 1000;
       }
-      else if (ingredient.measurement === "Fluid Ounces (fl oz)") {
+      else if (ingredient.measurement === "fluid ounces (fl oz)") {
         converted = ingredient.amount * 29.5735;
       }
-      else if (ingredient.measurement === "Shots (1.5 floz each)") {
+      else if (ingredient.measurement === "shots (1.5 fl oz each)") {
         converted = ingredient.amount * 44.3603;
       }
-      else if (ingredient.measurement === "Cups (c)") {
+      else if (ingredient.measurement === "cups (c)") {
         converted = ingredient.amount * 236.588;
       }
-      else if (ingredient.measurement === "Pints (pt)") {
+      else if (ingredient.measurement === "pints (pt)") {
         converted = ingredient.amount * 473.176;
       }
-      else if (ingredient.measurement === "Quarts (qt)") {
+      else if (ingredient.measurement === "quarts (qt)") {
         converted = ingredient.amount * 946.353;
       }
-      else if (ingredient.measurement === "Gallons (gal)") {
+      else if (ingredient.measurement === "gallons (gal)") {
         converted = ingredient.amount * 3785.41;
       }
       ingredient.parts = converted;
@@ -153,14 +153,14 @@ export class ABVCalc extends Component {
                 <br/><br/>
                 <span>Total Volume (All Units):</span>
                 <ul className="abvcalc-total-volume-list">
-                  <li>N/A Milliliters (mL)</li>
-                  <li>N/A Liters (L)</li>
-                  <li>N/A Fluid Ounces (fl oz)</li>
-                  <li>N/A Shots (1.5 floz each)</li>
-                  <li>N/A Cups (c)</li>
-                  <li>N/A Pints (pt)</li>
-                  <li>N/A Quarts (qt)</li>
-                  <li>N/A Gallons (gal)</li>
+                  <li>N/A milliliters (mL)</li>
+                  <li>N/A liters (L)</li>
+                  <li>N/A fluid ounces (fl oz)</li>
+                  <li>N/A shots (1.5 fl oz each)</li>
+                  <li>N/A cups (c)</li>
+                  <li>N/A pints (pt)</li>
+                  <li>N/A quarts (qt)</li>
+                  <li>N/A gallons (gal)</li>
                 </ul>
               </div> :
               <div>
@@ -168,14 +168,14 @@ export class ABVCalc extends Component {
                 <br/><br/>
                 <span>Total Volume (All Units):</span>
                 <ul className="abvcalc-total-volume-list">
-                  <li>{totalPartsmL} Milliliters (mL)</li>
-                  <li>{totalPartsL} Liters (L)</li>
-                  <li>{totalPartsfloz} Fluid Ounces (fl oz)</li>
-                  <li>{totalPartsshot} Shots (1.5 floz each)</li>
-                  <li>{totalPartscup} Cups (c)</li>
-                  <li>{totalPartspt} Pints (pt)</li>
-                  <li>{totalPartsqt} Quarts (qt)</li>
-                  <li>{totalPartsgal} Gallons (gal)</li>
+                  <li>{totalPartsmL} milliliters (mL)</li>
+                  <li>{totalPartsL} liters (L)</li>
+                  <li>{totalPartsfloz} fluid ounces (fl oz)</li>
+                  <li>{totalPartsshot} shots (1.5 fl oz each)</li>
+                  <li>{totalPartscup} cups (c)</li>
+                  <li>{totalPartspt} pints (pt)</li>
+                  <li>{totalPartsqt} quarts (qt)</li>
+                  <li>{totalPartsgal} gallons (gal)</li>
                 </ul>
               </div> }
             <br/>

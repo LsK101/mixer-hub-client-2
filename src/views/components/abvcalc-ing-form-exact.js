@@ -31,14 +31,14 @@ export class ABVCalcIngredientFormExact extends Component {
             <Field className="abvcalc-ing-parts-input"
               name="measurement" id="measurement" component="select" required>
               <option></option>
-              <option>Milliliters (mL)</option>
-              <option>Liters (L)</option>
-              <option>Fluid Ounces (fl oz)</option>
-              <option>Shots (1.5 floz each)</option>
-              <option>Cups (c)</option> 
-              <option>Pints (pt)</option>
-              <option>Quarts (qt)</option>
-              <option>Gallons (gal)</option>
+              <option>milliliters (mL)</option>
+              <option>liters (L)</option>
+              <option>fluid ounces (fl oz)</option>
+              <option>shots (1.5 fl oz each)</option>
+              <option>cups (c)</option> 
+              <option>pints (pt)</option>
+              <option>quarts (qt)</option>
+              <option>gallons (gal)</option>
             </Field>
             <br/>
             {this.props.loading ?
