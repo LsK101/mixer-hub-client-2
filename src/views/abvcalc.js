@@ -86,14 +86,40 @@ export class ABVCalc extends Component {
   }
 
   submitRecipe() {
-    let ingredients = this.props.ingredients;
-    if (ingredients.length < 2) {
+    if (this.props.ingredients.length < 2) {
       return alert('You must add at least 2 ingredients.');
     }
+    if (this.props.recipeName === '') {
+      return alert('Recipe name required.');
+    }
+    let recipeName = this.props.recipeName;
+    let ingredients = this.props.ingredients;
     let username = this.props.currentUser;
     let simpleMode = this.props.simpleMode;
-    let recipeName = this.props.recipeName;
     let totalABV = this.props.totalABV;
+    fetch(`${API_BASE_URL}/newrecipes/add`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${this.props.authToken}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "recipeName": recipeName,
+        "username": username,
+        "ingredients": ingredients,
+        "totalABV": totalABV,
+        "simpleMode": simpleMode
+      })
+    })
+    .then((res) => {
+      if (res.status === 200) {
+        return alert('Recipe Created!')
+      }
+    })
+    .catch((err) => {
+      return alert(err);
+    });
   }
 
   render() {
@@ -210,6 +236,7 @@ export class ABVCalc extends Component {
 }
 
 const mapStateToProps = state => ({
+  authToken: state.auth.authToken,
   simpleMode: state.abvcalc.simpleMode,
   showNewIngredientPopup: state.abvcalc.showNewIngredientPopup,
   showNewIngredientPopupExact: state.abvcalc.showNewIngredientPopupExact,
