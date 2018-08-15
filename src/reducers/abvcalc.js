@@ -5,7 +5,9 @@ const initialState = {
 	showNewIngredientPopup: false,
   showNewIngredientPopupExact: false,
   addIngredientLoading: false,
-  ingredients: []
+  ingredients: [],
+  totalABV: null,
+  totalParts: null
 }
 
 export const abvCalcReducer = (state=initialState, action) => {
@@ -44,6 +46,30 @@ export const abvCalcReducer = (state=initialState, action) => {
       simpleMode: action.boolean,
       ingredients: []
     });
+  }
+  else if (action.type === actions.RECALCULATE_ABV) {
+    console.log('trigger');
+    let ingredients = state.ingredients;
+    let totalAlcohol = 0;
+    let totalParts = 0;
+    let ABV;
+    if (ingredients.length > 0) {
+      for (let i = 0; i < ingredients.length; i++) {
+        totalAlcohol += parseFloat(ingredients[i].abv) * parseFloat(ingredients[i].parts);
+        totalParts += parseFloat(ingredients[i].parts);
+      }
+      ABV = (totalAlcohol / totalParts).toFixed(2);
+      return Object.assign({}, state, {
+        totalABV: ABV,
+        totalParts: totalParts
+      });
+    }
+    else {
+      return Object.assign({}, state, {
+        totalABV: null,
+        totalParts: null
+      });
+    }
   }
 	return state;
 }

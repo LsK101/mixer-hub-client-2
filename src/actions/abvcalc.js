@@ -38,3 +38,8 @@ export const CLEAR_INGREDIENTS = 'CLEAR_INGREDIENTS';
 export const clearIngredients = () => ({
 	type: 'CLEAR_INGREDIENTS'
 });
+
+export const RECALCULATE_ABV = 'RECALCULATE_ABV';
+export const recalculateABV = () => ({
+	type: 'RECALCULATE_ABV'
+});

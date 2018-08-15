@@ -12,7 +12,9 @@ import {setNewIngredientPopup,
         setNewIngredientPopupLoading,
         addNewIngredient,
         clearIngredients,
-        toggleSimpleMode} from '../actions/abvcalc.js'
+        toggleSimpleMode,
+        recalculateABV} from '../actions/abvcalc'
+import {API_BASE_URL} from '../config';
 
 export class ABVCalc extends Component {
 
@@ -67,6 +69,7 @@ export class ABVCalc extends Component {
     }
     this.props.dispatch(setNewIngredientPopupLoading(true));
     this.props.dispatch(addNewIngredient(ingredient));
+    this.props.dispatch(recalculateABV());
     this.props.dispatch(setNewIngredientPopup(false));
     this.props.dispatch(setNewIngredientPopupExact(false));
     this.props.dispatch(setNewIngredientPopupLoading(false));
@@ -74,32 +77,44 @@ export class ABVCalc extends Component {
 
   clearIngredients() {
     this.props.dispatch(clearIngredients());
+    this.props.dispatch(recalculateABV());
   }
 
   toggleSimpleMode(boolean) {
     this.props.dispatch(toggleSimpleMode(boolean));
+    this.props.dispatch(recalculateABV());
+  }
+
+  submitRecipe() {
+    let ingredients = this.props.ingredients;
+    if (ingredients.length < 2) {
+      return alert('You must add at least 2 ingredients.');
+    }
+    let username = this.props.currentUser;
+    let simpleMode = this.props.simpleMode;
+    let recipeName = this.props.recipeName;
+    let totalABV = this.props.totalABV;
   }
 
   render() {
-    let ingredients = this.props.ingredients;
-    let totalAlcohol = 0;
-    let totalParts = 0;
-    let ABV;
-    if (ingredients.length > 0) {
-      for (let i = 0; i < ingredients.length; i++) {
-        totalAlcohol += parseFloat(ingredients[i].abv) * parseFloat(ingredients[i].parts);
-        totalParts += parseFloat(ingredients[i].parts);
-      }
-      ABV = (totalAlcohol / totalParts).toFixed(2);
+    let totalPartsmL = null
+    let totalPartsL = null
+    let totalPartsfloz = null
+    let totalPartsshot = null
+    let totalPartscup = null
+    let totalPartspt = null
+    let totalPartsqt = null
+    let totalPartsgal = null
+    if (this.props.totalParts !== null) {
+      totalPartsmL = (this.props.totalParts).toFixed(2);
+      totalPartsL = (this.props.totalParts / 1000).toFixed(2);
+      totalPartsfloz = (this.props.totalParts / 29.5735).toFixed(2);
+      totalPartsshot = (this.props.totalParts / 44.3603).toFixed(2);
+      totalPartscup = (this.props.totalParts / 236.588).toFixed(2);
+      totalPartspt = (this.props.totalParts / 473.176).toFixed(2);
+      totalPartsqt = (this.props.totalParts / 946.353).toFixed(2);
+      totalPartsgal = (this.props.totalParts / 3785.41).toFixed(2);
     }
-    let totalPartsmL = (totalParts).toFixed(2);
-    let totalPartsL = (totalParts / 1000).toFixed(2);
-    let totalPartsfloz = (totalParts / 29.5735).toFixed(2);
-    let totalPartsshot = (totalParts / 44.3603).toFixed(2);
-    let totalPartscup = (totalParts / 236.588).toFixed(2);
-    let totalPartspt = (totalParts / 473.176).toFixed(2);
-    let totalPartsqt = (totalParts / 946.353).toFixed(2);
-    let totalPartsgal = (totalParts / 3785.41).toFixed(2);
     return (
       <div className="row">
         <h1>Quick ABV Calculator</h1>
@@ -129,7 +144,7 @@ export class ABVCalc extends Component {
             <br/>
             {this.props.ingredients.length === 0 ?
               <span>Mixture ABV: N/A</span> :
-              <span>Mixture ABV: {ABV}%</span> }
+              <span>Mixture ABV: {this.props.totalABV}%</span> }
             <br/><br/>
             <ABVCalcIngredientsList />
           </div> : // CONDITIONAL: EXACT MEASUREMENT MODE BEGINS HERE
@@ -171,7 +186,7 @@ export class ABVCalc extends Component {
                 </ul>
               </div> :
               <div>
-                <span>Mixture ABV: {ABV}%</span>
+                <span>Mixture ABV: {this.props.totalABV}%</span>
                 <br/><br/>
                 <span>Total Mixture Volume Conversions:</span>
                 <ul className="abvcalc-total-volume-list">
@@ -199,7 +214,10 @@ const mapStateToProps = state => ({
   showNewIngredientPopup: state.abvcalc.showNewIngredientPopup,
   showNewIngredientPopupExact: state.abvcalc.showNewIngredientPopupExact,
   addIngredientLoading: state.abvcalc.addIngredientLoading,
-  ingredients: state.abvcalc.ingredients
+  ingredients: state.abvcalc.ingredients,
+  currentUser: state.auth.currentUser,
+  totalABV: state.abvcalc.totalABV,
+  totalParts: state.abvcalc.totalParts
 });
 
 export default connect(mapStateToProps)(ABVCalc);

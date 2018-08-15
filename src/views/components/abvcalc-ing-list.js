@@ -3,12 +3,14 @@ import {connect} from 'react-redux';
 
 import './abvcalc-ing-list.css';
 
-import {deleteIngredient} from '../../actions/abvcalc';
+import {deleteIngredient,
+        recalculateABV} from '../../actions/abvcalc';
 
 export class ABVCalcIngredientsList extends Component {
 
   deleteIngredient(index) {
     this.props.dispatch(deleteIngredient(index));
+    this.props.dispatch(recalculateABV());
   }
 
   render() {
