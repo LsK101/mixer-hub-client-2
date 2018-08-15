@@ -7,7 +7,8 @@ const initialState = {
   addIngredientLoading: false,
   ingredients: [],
   totalABV: null,
-  totalParts: null
+  totalParts: null,
+  recipeName: ''
 }
 
 export const abvCalcReducer = (state=initialState, action) => {
@@ -38,13 +39,15 @@ export const abvCalcReducer = (state=initialState, action) => {
   }
   else if (action.type === actions.CLEAR_INGREDIENTS) {
     return Object.assign({}, state, {
-      ingredients: []
+      ingredients: [],
+      recipeName: ''
     });
   }
   else if (action.type === actions.TOGGLE_SIMPLE_MODE) {
     return Object.assign({}, state, {
       simpleMode: action.boolean,
-      ingredients: []
+      ingredients: [],
+      recipeName: ''
     });
   }
   else if (action.type === actions.RECALCULATE_ABV) {
@@ -69,6 +72,11 @@ export const abvCalcReducer = (state=initialState, action) => {
         totalParts: null
       });
     }
+  }
+  else if (action.type === actions.CHANGE_RECIPE_NAME) {
+    return Object.assign({}, state, {
+      recipeName: action.recipeName
+    });
   }
 	return state;
 }

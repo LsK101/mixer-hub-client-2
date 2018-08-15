@@ -13,7 +13,8 @@ import {setNewIngredientPopup,
         addNewIngredient,
         clearIngredients,
         toggleSimpleMode,
-        recalculateABV} from '../actions/abvcalc'
+        recalculateABV,
+        changeRecipeName} from '../actions/abvcalc'
 import {API_BASE_URL} from '../config';
 
 export class ABVCalc extends Component {
@@ -85,12 +86,19 @@ export class ABVCalc extends Component {
     this.props.dispatch(recalculateABV());
   }
 
+  changeRecipeName(recipeName) {
+    this.props.dispatch(changeRecipeName(recipeName));
+  }
+
   submitRecipe() {
-    if (this.props.ingredients.length < 2) {
-      return alert('You must add at least 2 ingredients.');
+    if (!this.props.authToken) {
+      return alert('You must be logged in to do that.');
     }
     if (this.props.recipeName === '') {
       return alert('Recipe name required.');
+    }
+    if (this.props.ingredients.length < 2) {
+      return alert('You must add at least 2 ingredients.');
     }
     let recipeName = this.props.recipeName;
     let ingredients = this.props.ingredients;
@@ -114,7 +122,11 @@ export class ABVCalc extends Component {
     })
     .then((res) => {
       if (res.status === 200) {
+        this.clearIngredients();
         return alert('Recipe Created!')
+      }
+      else if (res.status === 401) {
+        return alert('Authorization failed, please login again.')
       }
     })
     .catch((err) => {
@@ -143,8 +155,7 @@ export class ABVCalc extends Component {
     }
     return (
       <div className="row">
-        <h1>Quick ABV Calculator</h1>
-        <h3>Use this tool to quickly calculate the alcohol by volume of a mixture.</h3>
+        <h1>Recipe Creator</h1>
         {this.props.simpleMode ? // CONDITIONAL: PARTS MEASUREMENT MODE BEGINS HERE
           <div>
             {this.props.showNewIngredientPopup ? // CONDITIONAL: INGREDIENT POPUP IF STATEMENT
@@ -153,21 +164,32 @@ export class ABVCalc extends Component {
                 addIngredient={values => this.addIngredient(values)} 
                 closePopup={this.hideIngredientPopup.bind(this)} /> :
               null }
-            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,false)}>
-              Switch To Exact Measurements
-            </button>
-            <br/>
             <b>Mode: Parts Measurements</b>
             <br/>
             <span>Ingredients measured by parts.</span>
-            <br/>
+            <br/><br/>
+            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,false)}>
+              Switch To Exact Measurements
+            </button>
+            <br/><br/><br/>
+            <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
+              value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
+            <br/><br/>
             <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
               Add Ingredient
             </button>
             <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-              Clear
+              Clear Recipe
             </button>
-            <br/>
+            <br/><br/><br/>
+            {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
+              <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
+              Save Recipe
+              </button> :
+              <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
+              Save Recipe
+              </button> }
+            <br/><br/>
             {this.props.ingredients.length === 0 ?
               <span>Mixture ABV: N/A</span> :
               <span>Mixture ABV: {this.props.totalABV}%</span> }
@@ -181,20 +203,32 @@ export class ABVCalc extends Component {
                 addIngredient={values => this.addIngredient(values)} 
                 closePopup={this.hideIngredientPopupExact.bind(this)} /> :
               null }
-            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,true)}>
-              Switch To Parts Measurements
-            </button>
-            <br/>
             <b>Mode: Exact Measurements</b>
             <br/>
             <span>Ingredients measured by mL, fl oz, etc.</span>
-            <br/>
+            <br/><br/>
+            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,true)}>
+              Switch To Parts Measurements
+            </button>
+            <br/><br/><br/>
+            <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
+              value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
+            <br/><br/>
             <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
               Add Ingredient
             </button>
             <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-              Clear
+              Clear Recipe
             </button>
+            <br/><br/><br/>
+            {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
+              <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
+              Save Recipe
+              </button> :
+              <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
+              Save Recipe
+              </button> }
+            <br/><br/>
             {this.props.ingredients.length === 0 ?
               <div>
                 <span>Mixture ABV: N/A</span>
@@ -244,7 +278,8 @@ const mapStateToProps = state => ({
   ingredients: state.abvcalc.ingredients,
   currentUser: state.auth.currentUser,
   totalABV: state.abvcalc.totalABV,
-  totalParts: state.abvcalc.totalParts
+  totalParts: state.abvcalc.totalParts,
+  recipeName: state.abvcalc.recipeName
 });
 
 export default connect(mapStateToProps)(ABVCalc);

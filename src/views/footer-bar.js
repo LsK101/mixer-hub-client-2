@@ -22,10 +22,9 @@ export class FooterBar extends Component {
         	<img className="hamburger-icon" src={NavigationIcon} alt="navigation icon"/>
         	<ul className="footer-navbar-list">
           		<li><Link to="/dashboard" className="navbar-link">Dashboard</Link></li>
+              <li><Link to="/abvcalc" className="navbar-link">Create Recipe / ABV Calculator</Link></li>
           		<li><Link to="/browse" className="navbar-link">Browse Recipe Database</Link></li>
-          		<li><Link to="/create" className="navbar-link">Create New Recipe</Link></li>
           		<li><Link to="/manage" className="navbar-link">Manage Recipes</Link></li>
-          		<li><Link to="/abvcalc" className="navbar-link">Quick ABV Calculator</Link></li>
         	</ul>
       	</div>
     );

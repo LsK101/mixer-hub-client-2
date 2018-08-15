@@ -48,9 +48,12 @@ export default class Home extends Component {
       <div className="row">
         <div className="col-12">
           <h2>Changelog</h2>
-          <span><i>08/12/2018</i> - Quick ABV Calculator fully functional.</span>
+          <ul className="changelog-ul">
+            <li>[<b>08/15/2018</b>] Converted Quick ABV Calculator to Recipe Creator, merged functionality.</li>
+            <li>[<b>08/12/2018</b>] Quick ABV Calculator fully functional.</li>
+          </ul>
           <h2>Next on to do list:</h2>
-          <span>-Create and save recipes</span>
+          <span>- Browse Recipe Database functionality</span>
         </div>
       </div>
 

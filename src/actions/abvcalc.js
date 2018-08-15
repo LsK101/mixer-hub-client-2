@@ -43,3 +43,9 @@ export const RECALCULATE_ABV = 'RECALCULATE_ABV';
 export const recalculateABV = () => ({
 	type: 'RECALCULATE_ABV'
 });
+
+export const CHANGE_RECIPE_NAME = 'CHANGE_RECIPE_NAME';
+export const changeRecipeName = recipeName => ({
+	type: 'CHANGE_RECIPE_NAME',
+	recipeName
+});
