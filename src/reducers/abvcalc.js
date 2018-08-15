@@ -48,7 +48,6 @@ export const abvCalcReducer = (state=initialState, action) => {
     });
   }
   else if (action.type === actions.RECALCULATE_ABV) {
-    console.log('trigger');
     let ingredients = state.ingredients;
     let totalAlcohol = 0;
     let totalParts = 0;
