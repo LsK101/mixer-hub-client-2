@@ -44,7 +44,9 @@ export class BrowseRecipes extends Component {
           let simpleMode = recipe.simpleMode;
           if (simpleMode === true) {
             return <div key={index} className="browse-recipe-container col-12">
-                    <span><b>{recipeName}</b> ({ABV}% ABV)</span>
+                    <span><b>{recipeName}</b></span>
+                    <br/> 
+                    <span>{ABV}% ABV</span>
                     <br/>
                     <span>Mixed By: <i>{username}</i></span>
                     <br/><br/>
@@ -65,7 +67,9 @@ export class BrowseRecipes extends Component {
           }
           else {
             return <div key={index} className="browse-recipe-container col-12">
-                    <span><b>{recipeName}</b> ({ABV}% ABV)</span>
+                    <span><b>{recipeName}</b></span>
+                    <br/> 
+                    <span>{ABV}% ABV</span>
                     <br/>
                     <span>Mixed By: <i>{username}</i></span>
                     <br/><br/>
