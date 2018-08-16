@@ -49,11 +49,22 @@ export default class Home extends Component {
         <div className="col-12">
           <h2>Changelog</h2>
           <ul className="changelog-ul">
+            <li>[<b>08/15/2018</b>] Recipe database now browsable.</li>
             <li>[<b>08/15/2018</b>] Converted Quick ABV Calculator to Recipe Creator, merged functionality.</li>
             <li>[<b>08/12/2018</b>] Quick ABV Calculator fully functional.</li>
           </ul>
-          <h2>Next on to do list:</h2>
-          <span>- Browse Recipe Database functionality</span>
+          <h2>To do list:</h2>
+          <ul className="changelog-ul">
+            <li>- Search and sort recipe list</li>
+            <li>- Edit recipes functionality</li>
+            <li>- Edit ingredients during recipe creation</li>
+            <li>- Make recipes clickable with more information</li>
+            <li>- Recipe ratings system</li>
+            <li>- Dashboard functionality</li>
+            <li>- Add photo to recipe</li>
+            <li>- Add description to recipe</li>
+            <li>- Commenting system</li>
+          </ul>
         </div>
       </div>
 

@@ -19,12 +19,12 @@ export class ABVCalcIngredientFormExact extends Component {
             <label className="abvcalc-ing-label" htmlFor="abv">ABV (%)</label>
             <br/>
             <Field className="abvcalc-ing-abv-input" 
-              name="abv" id="abv" type="number" component="input" step="any" required />
+              name="abv" id="abv" type="number" component="input" step="0.01" required />
             <br/>
             <label className="abvcalc-ing-label" htmlFor="amount">Amount</label>
             <br/>
             <Field className="abvcalc-ing-parts-input"
-              name="amount" id="amount" type="number" component="input" step="any" required />
+              name="amount" id="amount" type="number" component="input" step="0.01" required />
             <br/>
             <label className="abvcalc-ing-label" htmlFor="measurement">Measurement</label>
             <br/>

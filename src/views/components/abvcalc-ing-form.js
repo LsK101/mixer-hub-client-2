@@ -19,12 +19,12 @@ export class ABVCalcIngredientForm extends Component {
             <label className="abvcalc-ing-label" htmlFor="abv">ABV (%)</label>
             <br/>
             <Field className="abvcalc-ing-abv-input" 
-              name="abv" id="abv" type="number" component="input" step="any" required />
+              name="abv" id="abv" type="number" component="input" step="0.01" required />
             <br/>
             <label className="abvcalc-ing-label" htmlFor="parts">Parts In Mixture</label>
             <br/>
             <Field className="abvcalc-ing-parts-input"
-              name="parts" id="parts" type="number" component="input" step="any" required />
+              name="parts" id="parts" type="number" component="input" step="0.01" required />
             <br/>
             {this.props.loading ?
               <img className="abvcalc-ing-loading" src={LoadingGif} alt="loading" /> :

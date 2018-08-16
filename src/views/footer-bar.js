@@ -23,7 +23,7 @@ export class FooterBar extends Component {
         	<ul className="footer-navbar-list">
           		<li><Link to="/dashboard" className="navbar-link">Dashboard</Link></li>
               <li><Link to="/abvcalc" className="navbar-link">Create Recipe / ABV Calculator</Link></li>
-          		<li><Link to="/browse" className="navbar-link">Browse Recipe Database</Link></li>
+          		<li><Link to="/browse" className="navbar-link">Browse Recipes</Link></li>
           		<li><Link to="/manage" className="navbar-link">Manage Recipes</Link></li>
         	</ul>
       	</div>
