@@ -22,7 +22,7 @@ export class ABVCalcIngredientsListExact extends Component {
         let amount = parseFloat(ingredient.amount).toFixed(2);
         let units = ingredient.measurement;
         let ingredientName = ingredient.ingredient;
-        return <div key={index} className="abvcalc-ing-list-ing col-6">
+        return <div key={index} className="abvcalc-ing-list-ing col-4">
                 <button className="abvcalc-ing-list-delete-button"
                   onClick={this.deleteIngredient.bind(this,{index})}>X</button>
                 <span>Ingredient #{index+1}:</span>

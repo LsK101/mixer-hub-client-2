@@ -1,6 +1,6 @@
 .abvcalc-ing-list-ing {
-	border: 1px solid #00aeff;
 	border-radius: 3px;
+	overflow: auto;
 }
 
 .abvcalc-ing-list-delete-button {
