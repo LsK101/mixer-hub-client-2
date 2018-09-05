@@ -164,36 +164,38 @@ export class ABVCalc extends Component {
                 addIngredient={values => this.addIngredient(values)} 
                 closePopup={this.hideIngredientPopup.bind(this)} /> :
               null }
-            <b>Mode: Parts Measurements</b>
-            <br/>
-            <span>Ingredients measured by parts.</span>
-            <br/><br/>
-            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,false)}>
-              Switch To Exact Measurements
-            </button>
-            <br/><br/><br/>
-            <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
-              value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
-            <br/><br/>
-            <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
-              Add Ingredient
-            </button>
-            <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-              Clear Recipe
-            </button>
-            <br/><br/><br/>
-            {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
-              <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
-              Save Recipe
-              </button> :
-              <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
-              Save Recipe
-              </button> }
-            <br/><br/>
-            {this.props.ingredients.length === 0 ?
-              <span>Mixture ABV: N/A</span> :
-              <span>Mixture ABV: {this.props.totalABV}%</span> }
-            <br/><br/>
+            <div className="col-6 recipe-form">
+              <b>Mode: Parts Measurements</b>
+              <br/>
+              <span>Ingredients measured by ratio of parts.</span>
+              <br/><br/>
+              <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,false)}>
+                Switch To Exact Measurements
+              </button>
+              <br/><br/><br/>
+              <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
+                value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
+              <br/><br/>
+              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
+                Add Ingredient
+              </button>
+              <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+                Clear Recipe
+              </button>
+              <br/><br/><br/>
+              {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
+                <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
+                Save Recipe
+                </button> :
+                <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
+                Save Recipe
+                </button> }
+            </div>
+            <div className="col-6 recipe-calculation">
+              {this.props.ingredients.length === 0 ?
+                <span>Mixture ABV: N/A</span> :
+                <span>Mixture ABV: {this.props.totalABV}%</span> }
+            </div>
             <ABVCalcIngredientsList />
           </div> : // CONDITIONAL: EXACT MEASUREMENT MODE BEGINS HERE
           <div>
@@ -203,64 +205,66 @@ export class ABVCalc extends Component {
                 addIngredient={values => this.addIngredient(values)} 
                 closePopup={this.hideIngredientPopupExact.bind(this)} /> :
               null }
-            <b>Mode: Exact Measurements</b>
-            <br/>
-            <span>Ingredients measured by mL, fl oz, etc.</span>
-            <br/><br/>
-            <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,true)}>
-              Switch To Parts Measurements
-            </button>
-            <br/><br/><br/>
-            <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
-              value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
-            <br/><br/>
-            <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
-              Add Ingredient
-            </button>
-            <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-              Clear Recipe
-            </button>
-            <br/><br/><br/>
-            {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
-              <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
-              Save Recipe
-              </button> :
-              <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
-              Save Recipe
-              </button> }
-            <br/><br/>
-            {this.props.ingredients.length === 0 ?
-              <div>
-                <span>Mixture ABV: N/A</span>
-                <br/><br/>
-                <span>Total Mixture Volume Conversions:</span>
-                <ul className="abvcalc-total-volume-list">
-                  <li>N/A milliliters (mL)</li>
-                  <li>N/A liters (L)</li>
-                  <li>N/A fluid ounces (fl oz)</li>
-                  <li>N/A shots (1.5 fl oz each)</li>
-                  <li>N/A cups (c)</li>
-                  <li>N/A pints (pt)</li>
-                  <li>N/A quarts (qt)</li>
-                  <li>N/A gallons (gal)</li>
-                </ul>
-              </div> :
-              <div>
-                <span>Mixture ABV: {this.props.totalABV}%</span>
-                <br/><br/>
-                <span>Total Mixture Volume Conversions:</span>
-                <ul className="abvcalc-total-volume-list">
-                  <li>{totalPartsmL} milliliters (mL)</li>
-                  <li>{totalPartsL} liters (L)</li>
-                  <li>{totalPartsfloz} fluid ounces (fl oz)</li>
-                  <li>{totalPartsshot} shots (1.5 fl oz each)</li>
-                  <li>{totalPartscup} cups (c)</li>
-                  <li>{totalPartspt} pints (pt)</li>
-                  <li>{totalPartsqt} quarts (qt)</li>
-                  <li>{totalPartsgal} gallons (gal)</li>
-                </ul>
-              </div> }
-            <br/>
+            <div className="col-6 recipe-form">
+              <b>Mode: Exact Measurements</b>
+              <br/>
+              <span>Ingredients measured by mL, fl oz, etc.</span>
+              <br/><br/>
+              <button className="abvcalc-switch-button" onClick={this.toggleSimpleMode.bind(this,true)}>
+                Switch To Parts Measurements
+              </button>
+              <br/><br/><br/>
+              <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
+                value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
+              <br/><br/>
+              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
+                Add Ingredient
+              </button>
+              <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+                Clear Recipe
+              </button>
+              <br/><br/><br/>
+              {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
+                <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
+                  Save Recipe
+                </button> :
+                <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
+                  Save Recipe
+                </button> }
+            </div>
+            <div className="col-6 recipe-calculation">
+              {this.props.ingredients.length === 0 ?
+                <div>
+                  <span>Mixture ABV: N/A</span>
+                  <br/><br/>
+                  <span>Total Mixture Volume Conversions:</span>
+                  <ul className="abvcalc-total-volume-list">
+                    <li>N/A milliliters (mL)</li>
+                    <li>N/A liters (L)</li>
+                    <li>N/A fluid ounces (fl oz)</li>
+                    <li>N/A shots (1.5 fl oz each)</li>
+                    <li>N/A cups (c)</li>
+                    <li>N/A pints (pt)</li>
+                    <li>N/A quarts (qt)</li>
+                    <li>N/A gallons (gal)</li>
+                  </ul>
+                </div> :
+                <div>
+                  <span>Mixture ABV: {this.props.totalABV}%</span>
+                  <br/><br/>
+                  <span>Total Mixture Volume Conversions:</span>
+                  <ul className="abvcalc-total-volume-list">
+                    <li>{totalPartsmL} milliliters (mL)</li>
+                    <li>{totalPartsL} liters (L)</li>
+                    <li>{totalPartsfloz} fluid ounces (fl oz)</li>
+                    <li>{totalPartsshot} shots (1.5 fl oz each)</li>
+                    <li>{totalPartscup} cups (c)</li>
+                    <li>{totalPartspt} pints (pt)</li>
+                    <li>{totalPartsqt} quarts (qt)</li>
+                    <li>{totalPartsgal} gallons (gal)</li>
+                  </ul>
+                </div> }
+            </div>
             <ABVCalcIngredientsListExact />
           </div> }
 

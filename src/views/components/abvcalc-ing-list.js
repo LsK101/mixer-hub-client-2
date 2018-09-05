@@ -15,7 +15,7 @@ export class ABVCalcIngredientsList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-12">
 
        {this.props.ingredients.map((ingredient,index) => {
         let ingredientABV = parseFloat(ingredient.abv).toFixed(2);

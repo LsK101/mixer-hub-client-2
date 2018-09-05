@@ -71,3 +71,8 @@
 	padding: 5px;
 	width: 14.7em;
 }
+
+.recipe-form,
+.recipe-calculation {
+	margin-bottom: 1em;
+}
