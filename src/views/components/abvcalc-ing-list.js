@@ -24,6 +24,8 @@ export class ABVCalcIngredientsList extends Component {
         return <div key={index} className="abvcalc-ing-list-ing col-6">
                 <button className="abvcalc-ing-list-delete-button"
                   onClick={this.deleteIngredient.bind(this,{index})}>Delete</button>
+                <button className="abvcalc-ing-list-edit-button"
+                  >Edit</button>
                 <br/>
                 <span>Ingredient #{index+1}:</span>
                 <ul className="abvcalc-ing-list-ul">
@@ -40,7 +42,7 @@ export class ABVCalcIngredientsList extends Component {
 }
 
 const mapStateToProps = state => ({
-	ingredients: state.abvcalc.ingredients,
+	ingredients: state.abvcalc.ingredients
 });
 
 export default connect(mapStateToProps)(ABVCalcIngredientsList);

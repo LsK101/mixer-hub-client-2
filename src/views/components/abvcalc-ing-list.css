@@ -5,9 +5,11 @@
 	overflow-y: hidden;
 }
 
-.abvcalc-ing-list-delete-button {
-	margin-top: 10px;
-	margin-right: 10px;
+.abvcalc-ing-list-delete-button,
+.abvcalc-ing-list-edit-button {
+	width: 4em;
+	margin-top: 0.5em;
+	margin-right: 1em;
 	display: inline-block;
 	border-radius: 3px;
 	font-family: 'Ubuntu', sans-serif;
