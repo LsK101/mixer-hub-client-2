@@ -176,13 +176,6 @@ export class ABVCalc extends Component {
               <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
                 value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
               <br/><br/>
-              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
-                Add Ingredient
-              </button>
-              <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-                Clear Recipe
-              </button>
-              <br/><br/><br/>
               {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
                 <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
                 Save Recipe
@@ -190,6 +183,13 @@ export class ABVCalc extends Component {
                 <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
                 Save Recipe
                 </button> }
+              <br/><br/><br/>
+              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
+                Add Ingredient
+              </button>
+              <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+                Clear Recipe
+              </button>
             </div>
             <div className="col-6 recipe-calculation">
               {this.props.ingredients.length === 0 ?
@@ -217,13 +217,6 @@ export class ABVCalc extends Component {
               <input className="abvcalc-recipe-name-input" type="text" placeholder="Recipe Name" 
                 value={this.props.recipeName} onChange={event => this.changeRecipeName(event.target.value)} />
               <br/><br/>
-              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
-                Add Ingredient
-              </button>
-              <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
-                Clear Recipe
-              </button>
-              <br/><br/><br/>
               {!this.props.authToken || this.props.ingredients.length < 2 || this.props.recipeName === '' ?
                 <button className="abvcalc-submit-button-invalid" onClick={this.submitRecipe.bind(this)}>
                   Save Recipe
@@ -231,6 +224,13 @@ export class ABVCalc extends Component {
                 <button className="abvcalc-submit-button" onClick={this.submitRecipe.bind(this)}>
                   Save Recipe
                 </button> }
+              <br/><br/><br/>
+              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
+                Add Ingredient
+              </button>
+              <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
+                Clear Recipe
+              </button>
             </div>
             <div className="col-6 recipe-calculation">
               {this.props.ingredients.length === 0 ?
