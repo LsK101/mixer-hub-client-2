@@ -18,3 +18,10 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.sort-dropbox {
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #353535;
+	color: white;
+	border: 1px solid #00aeff;
+}

@@ -6,7 +6,8 @@ import {API_BASE_URL} from '../config';
 import LoadingGif from '../images/loading.gif';
 
 import {setRecipeData,
-        setBrowseLoading} from '../actions/browse-recipes';
+        setBrowseLoading,
+        changeSortMethod} from '../actions/browse-recipes';
 
 export class BrowseRecipes extends Component {
   componentWillMount() {
@@ -35,18 +36,66 @@ export class BrowseRecipes extends Component {
     });
   }
 
+  changeSortMethod(event) {
+    let changeValue = String(event.target.value);
+    this.props.dispatch(changeSortMethod(changeValue));
+  }
+
   render() {
     return (
       <div className="row">
 
         <h1>Browse Recipes</h1>
 
+        <strong>Sort By: </strong>
+        <select className="sort-dropbox"
+          onChange={this.changeSortMethod.bind(this)} 
+          value={this.props.sort}>
+          <option value='Recipe Name A-Z'>Recipe Name A-Z</option>
+          <option value='Recipe Name Z-A'>Recipe Name Z-A</option>
+          <option value='Recipe Mixer A-Z'>Recipe Mixer A-Z</option>
+          <option value='Recipe Mixer Z-A'>Recipe Mixer Z-A</option>
+          <option value='Highest ABV'>Highest ABV</option>
+          <option value='Lowest ABV'>Lowest ABV</option>
+          <option value='Most Ingredients'>Most Ingredients</option>
+          <option value='Least Ingredients'>Least Ingredients</option>
+        </select>
+
         {this.props.browseLoading 
           ? 
           <img className="browse-loading" src={LoadingGif} alt="loading" /> 
           :
           <div>
-            {this.props.recipeData.map((recipe,index) => {
+            {this.props.recipeData.sort((a,b) => {
+              if (this.props.sort === 'Recipe Name A-Z') {
+                return (a.recipeName.toLowerCase() > b.recipeName.toLowerCase() ? 1 : -1);
+              }
+              else if (this.props.sort === 'Recipe Name Z-A') {
+                return (a.recipeName.toLowerCase() < b.recipeName.toLowerCase() ? 1 : -1);
+              }
+              else if (this.props.sort === 'Recipe Mixer A-Z') {
+                return (a.username.toLowerCase() > b.username.toLowerCase() ? 1 : -1);
+              }
+              else if (this.props.sort === 'Recipe Mixer Z-A') {
+                return (a.username.toLowerCase() < b.username.toLowerCase() ? 1 : -1);
+              }
+              else if (this.props.sort === 'Highest ABV') {
+                return (a.totalABV < b.totalABV ? 1 : -1)
+              }
+              else if (this.props.sort === 'Lowest ABV') {
+                return (a.totalABV > b.totalABV ? 1 : -1)
+              }
+              else if (this.props.sort === 'Most Ingredients') {
+                return (a.ingredients.length < b.ingredients.length ? 1 : -1)
+              }
+              else if (this.props.sort === 'Least Ingredients') {
+                return (a.ingredients.length > b.ingredients.length ? 1 : -1)
+              }
+              else {
+                return 0;
+              }
+              })
+              .map((recipe,index) => {
               let recipeName = recipe.recipeName;
               let username = recipe.username;
               let ingredients = recipe.ingredients;
@@ -135,6 +184,7 @@ export class BrowseRecipes extends Component {
 }
 
 const mapStateToProps = state => ({
+  sort: state.browseRecipes.sort,
   browseLoading: state.browseRecipes.loading,
   recipeData: state.browseRecipes.recipeData
 });
