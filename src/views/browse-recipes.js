@@ -109,7 +109,10 @@ export class BrowseRecipes extends Component {
                         <br/>
                         <span>Mixed By: <i>{username}</i></span>
                         <br/><br/>
-                        {ingredients.map((ingredient, index) => {
+                        {ingredients.sort((a,b) => {
+                            return (a.parts < b.parts ? 1 : -1);
+                          })
+                          .map((ingredient, index) => {
                           let ingredientABV = parseFloat(ingredient.abv).toFixed(2);
                           let ingredientParts = parseFloat(ingredient.parts).toFixed(2);
                           if (ingredientParts === parseFloat(1).toFixed(2)) {
@@ -132,7 +135,10 @@ export class BrowseRecipes extends Component {
                         <br/>
                         <span>Mixed By: <i>{username}</i></span>
                         <br/><br/>
-                        {ingredients.map((ingredient, index) => {
+                        {ingredients.sort((a,b) => {
+                            return (a.parts < b.parts ? 1 : -1);
+                          })
+                          .map((ingredient, index) => {
                           let ingredientABV = parseFloat(ingredient.abv).toFixed(2);
                           let ingredientAmount = parseFloat(ingredient.amount).toFixed(2);
                           let unit;
