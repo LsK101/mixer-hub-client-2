@@ -55,15 +55,18 @@ export default class Home extends Component {
           </ul>
           <h2>To do list:</h2>
           <ul className="changelog-ul">
-            <li>- Search and sort recipe list</li>
-            <li>- Edit recipes functionality</li>
-            <li>- Edit ingredients during recipe creation</li>
-            <li>- Make recipes clickable with more information</li>
-            <li>- Recipe ratings system</li>
-            <li>- Dashboard functionality</li>
-            <li>- Add photo to recipe</li>
-            <li>- Add description to recipe</li>
-            <li>- Commenting system</li>
+            <li>- <b>[Dashboard]</b> main functionality</li>
+            <li>- <b>[Create Recipe / ABV Calculator]</b> confirmation dialog when clearing recipes or deleting ingredients</li>
+            <li>- <b>[Create Recipe / ABV Calculator]</b> warning dialog that switching modes will clear recipe</li>
+            <li>- <b>[Create Recipe / ABV Calculator]</b> edit individual ingredients</li>
+            <li>- <b>[Create Recipe / ABV Calculator]</b> add recipe photo</li>
+            <li>- <b>[Create Recipe / ABV Calculator]</b> add recipe description</li>
+            <li>- <b>[Browse Recipes]</b> search and sort recipe list</li>
+            <li>- <b>[Browse Recipes]</b> implement page system</li>
+            <li>- <b>[Browse Recipes]</b> show minimal recipe info, click recipe to expand or open new window</li>
+            <li>- <b>[Browse Recipes]</b> ratings system</li>
+            <li>- <b>[Browse Recipes]</b> commenting system</li>
+            <li>- <b>[Manage Recipes]</b> main functionality</li>
           </ul>
         </div>
       </div>
