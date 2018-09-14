@@ -49,9 +49,10 @@ export default class Home extends Component {
         <div className="col-12">
           <h2>Changelog</h2>
           <ul className="changelog-ul">
-            <li>[<b>08/15/2018</b>] Recipe database now browsable.</li>
-            <li>[<b>08/15/2018</b>] Converted Quick ABV Calculator to Recipe Creator, merged functionality.</li>
-            <li>[<b>08/12/2018</b>] Quick ABV Calculator fully functional.</li>
+            <li><b>[09/14/2018]</b> Added sorting method to recipe browser, edited recipe creator layout.</li>
+            <li><b>[08/15/2018]</b> Recipe database now browsable.</li>
+            <li><b>[08/15/2018]</b> Converted Quick ABV Calculator to Recipe Creator, merged functionality.</li>
+            <li><b>[08/12/2018]</b> Quick ABV Calculator fully functional.</li>
           </ul>
           <h2>To do list:</h2>
           <ul className="changelog-ul">
@@ -61,7 +62,7 @@ export default class Home extends Component {
             <li>- <b>[Create Recipe / ABV Calculator]</b> edit individual ingredients</li>
             <li>- <b>[Create Recipe / ABV Calculator]</b> add recipe photo</li>
             <li>- <b>[Create Recipe / ABV Calculator]</b> add recipe description</li>
-            <li>- <b>[Browse Recipes]</b> search and sort recipe list</li>
+            <li>- <b>[Browse Recipes]</b> search recipe list</li>
             <li>- <b>[Browse Recipes]</b> implement page system</li>
             <li>- <b>[Browse Recipes]</b> show minimal recipe info, click recipe to expand or open new window</li>
             <li>- <b>[Browse Recipes]</b> ratings system</li>
