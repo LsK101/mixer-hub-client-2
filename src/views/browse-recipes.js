@@ -7,6 +7,8 @@ import LoadingGif from '../images/loading.gif';
 
 import {setRecipeData,
         setBrowseLoading,
+        changeSearchInput,
+        changeSearchQuery,
         changeSortMethod} from '../actions/browse-recipes';
 
 export class BrowseRecipes extends Component {
@@ -36,9 +38,42 @@ export class BrowseRecipes extends Component {
     });
   }
 
+  changeSearchInput(event) {
+    this.props.dispatch(changeSearchInput(event.target.value));
+  }
+
+  changeSearchQuery() {
+    this.getRecipeDatabase();
+    this.props.dispatch(changeSearchQuery(this.props.searchInput));
+    this.props.dispatch(changeSearchInput(''));
+  }
+
+  clearSearchFilters() {
+    this.getRecipeDatabase();
+    this.props.dispatch(changeSearchQuery(''));
+    this.props.dispatch(changeSearchInput(''));
+  }
+
+  filterRecipesBySearchQuery(recipeName, ingredients, recipeCreator) {
+    const queryStrings = this.props.searchQuery.toLowerCase().split(" ").filter(Boolean);
+    const recipeNameLowercased = recipeName.toLowerCase();
+    const recipeCreatorLowercased = recipeCreator.toLowerCase();
+    let recipeTotalString = recipeNameLowercased + " " + recipeCreatorLowercased + " ";
+    for (let i = 0; i < ingredients.length; i++) {
+      recipeTotalString += ingredients[i].ingredient.toLowerCase();
+      recipeTotalString += " ";
+    }
+    for (let j = 0; j < queryStrings.length; j++) {
+      if (!recipeTotalString.includes(queryStrings[j])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   changeSortMethod(event) {
-    let changeValue = String(event.target.value);
-    this.props.dispatch(changeSortMethod(changeValue));
+    this.getRecipeDatabase();
+    this.props.dispatch(changeSortMethod(event.target.value));
   }
 
   render() {
@@ -46,6 +81,19 @@ export class BrowseRecipes extends Component {
       <div className="row">
 
         <h1>Browse Recipes</h1>
+
+        <form onSubmit={event => {
+            event.preventDefault();
+            this.changeSearchQuery();
+          }}>
+          <label htmlFor="browse-search-input" className="search-label"><strong>Keyword Search: </strong></label>
+          <br/>
+          <input type="search" id="browse-search-input" name="browse-search-input" value={this.props.searchInput} autoComplete="off"
+            onChange={this.changeSearchInput.bind(this)} />
+          <button className="search-button" type="submit">Search</button>
+        </form>
+
+        <br/>
 
         <strong>Sort By: </strong>
         <select className="sort-dropbox"
@@ -61,12 +109,18 @@ export class BrowseRecipes extends Component {
           <option value='Least Ingredients'>Least Ingredients</option>
         </select>
 
+        <br/><br/>
+
+        <button className="clear-button" type="button"
+            onClick={this.clearSearchFilters.bind(this)}>Show All Recipes</button>
+
         {this.props.browseLoading 
           ? 
           <img className="browse-loading" src={LoadingGif} alt="loading" /> 
           :
           <div>
-            {this.props.recipeData.sort((a,b) => {
+            {this.props.recipeData.filter(recipe => this.filterRecipesBySearchQuery(recipe.recipeName, recipe.ingredients, recipe.username))
+              .sort((a,b) => {
               if (this.props.sort === 'Recipe Name A-Z') {
                 return (a.recipeName.toLowerCase() > b.recipeName.toLowerCase() ? 1 : -1);
               }
@@ -191,6 +245,8 @@ export class BrowseRecipes extends Component {
 
 const mapStateToProps = state => ({
   sort: state.browseRecipes.sort,
+  searchInput: state.browseRecipes.searchInput,
+  searchQuery: state.browseRecipes.searchQuery,
   browseLoading: state.browseRecipes.loading,
   recipeData: state.browseRecipes.recipeData
 });

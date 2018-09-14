@@ -19,9 +19,36 @@
 	margin-right: auto;
 }
 
+#browse-search-input {
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #353535;
+	color: white;
+	border: 1px solid #00aeff;
+	border-radius: 3px;
+	width: 15em;
+}
+
+.search-button {
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #353535;
+	color: #00aeff;
+	border: 1px solid #00aeff;
+	border-radius: 3px;
+	margin-left: 0.3em;
+}
+
+.clear-button {
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #353535;
+	color: #00aeff;
+	border: 1px solid #00aeff;
+	border-radius: 3px;
+}
+
 .sort-dropbox {
 	font-family: 'Ubuntu', sans-serif;
 	background-color: #353535;
 	color: white;
 	border: 1px solid #00aeff;
+	border-radius: 3px;
 }
