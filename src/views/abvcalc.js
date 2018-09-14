@@ -4,11 +4,8 @@ import {connect} from 'react-redux';
 import './abvcalc.css';
 import ABVCalcIngredientsList from './components/abvcalc-ing-list';
 import ABVCalcIngredientForm from './components/abvcalc-ing-form';
-import ABVCalcIngredientsListExact from './components/abvcalc-ing-list-exact';
-import ABVCalcIngredientFormExact from './components/abvcalc-ing-form-exact';
 
 import {setNewIngredientPopup,
-        setNewIngredientPopupExact,
         setNewIngredientPopupLoading,
         addNewIngredient,
         clearIngredients,
@@ -25,14 +22,6 @@ export class ABVCalc extends Component {
 
   hideIngredientPopup() {
     this.props.dispatch(setNewIngredientPopup(false));
-  }
-
-  showIngredientPopupExact() {
-    this.props.dispatch(setNewIngredientPopupExact(true));
-  }
-
-  hideIngredientPopupExact() {
-    this.props.dispatch(setNewIngredientPopupExact(false));
   }
 
   addIngredient(values) {
@@ -72,7 +61,6 @@ export class ABVCalc extends Component {
     this.props.dispatch(addNewIngredient(ingredient));
     this.props.dispatch(recalculateABV());
     this.props.dispatch(setNewIngredientPopup(false));
-    this.props.dispatch(setNewIngredientPopupExact(false));
     this.props.dispatch(setNewIngredientPopupLoading(false));
   }
 
@@ -156,14 +144,9 @@ export class ABVCalc extends Component {
     return (
       <div className="row">
         <h1>Recipe Creator</h1>
-        {this.props.simpleMode ? // CONDITIONAL: PARTS MEASUREMENT MODE BEGINS HERE
+        {this.props.simpleMode ? // CONDITIONAL: CHECK MEASUREMENT MODE 
+          // CONDITIONAL: PARTS MEASUREMENT MODE BEGINS HERE
           <div>
-            {this.props.showNewIngredientPopup ? // CONDITIONAL: INGREDIENT POPUP IF STATEMENT
-              <ABVCalcIngredientForm 
-                loading={this.props.addIngredientLoading}
-                addIngredient={values => this.addIngredient(values)} 
-                closePopup={this.hideIngredientPopup.bind(this)} /> :
-              null }
             <div className="col-6 recipe-form">
               <b>Mode: Parts Measurements</b>
               <br/>
@@ -196,15 +179,8 @@ export class ABVCalc extends Component {
                 <span>Mixture ABV: N/A</span> :
                 <span>Mixture ABV: {this.props.totalABV}%</span> }
             </div>
-            <ABVCalcIngredientsList />
           </div> : // CONDITIONAL: EXACT MEASUREMENT MODE BEGINS HERE
           <div>
-            {this.props.showNewIngredientPopupExact ? // CONDITIONAL: INGREDIENT EXACT POPUP IF STATEMENT
-              <ABVCalcIngredientFormExact  
-                loading={this.props.addIngredientLoading}
-                addIngredient={values => this.addIngredient(values)} 
-                closePopup={this.hideIngredientPopupExact.bind(this)} /> :
-              null }
             <div className="col-6 recipe-form">
               <b>Mode: Exact Measurements</b>
               <br/>
@@ -225,7 +201,7 @@ export class ABVCalc extends Component {
                   Save Recipe
                 </button> }
               <br/><br/><br/>
-              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopupExact.bind(this)}>
+              <button className="abvcalc-add-ing-button" onClick={this.showIngredientPopup.bind(this)}>
                 Add Ingredient
               </button>
               <button className="abvcalc-clear-ing-button" onClick={this.clearIngredients.bind(this)}>
@@ -265,9 +241,15 @@ export class ABVCalc extends Component {
                   </ul>
                 </div> }
             </div>
-            <ABVCalcIngredientsListExact />
-          </div> }
-
+          </div> } 
+        <ABVCalcIngredientsList />
+        {this.props.showNewIngredientPopup ? // CONDITIONAL: INGREDIENT POPUP IF STATEMENT
+          <ABVCalcIngredientForm
+            simpleMode={this.props.simpleMode} 
+            loading={this.props.addIngredientLoading}
+            addIngredient={values => this.addIngredient(values)} 
+            closePopup={this.hideIngredientPopup.bind(this)} /> :
+            null }
       </div>
     );
   }
@@ -277,7 +259,6 @@ const mapStateToProps = state => ({
   authToken: state.auth.authToken,
   simpleMode: state.abvcalc.simpleMode,
   showNewIngredientPopup: state.abvcalc.showNewIngredientPopup,
-  showNewIngredientPopupExact: state.abvcalc.showNewIngredientPopupExact,
   addIngredientLoading: state.abvcalc.addIngredientLoading,
   ingredients: state.abvcalc.ingredients,
   currentUser: state.auth.currentUser,

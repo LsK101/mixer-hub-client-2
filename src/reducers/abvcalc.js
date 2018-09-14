@@ -17,11 +17,6 @@ export const abvCalcReducer = (state=initialState, action) => {
       showNewIngredientPopup: action.boolean
     });
   }
-  else if (action.type === actions.SET_NEW_INGREDIENT_POPUP_EXACT) {
-    return Object.assign({}, state, {
-      showNewIngredientPopupExact: action.boolean
-    });
-  }
   else if (action.type === actions.SET_NEW_INGREDIENT_POPUP_LOADING) {
     return Object.assign({}, state, {
       addIngredientLoading: action.boolean

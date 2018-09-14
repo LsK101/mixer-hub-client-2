@@ -10,12 +10,6 @@ export const setNewIngredientPopup = boolean => ({
 	boolean
 });
 
-export const SET_NEW_INGREDIENT_POPUP_EXACT = 'SET_NEW_INGREDIENT_POPUP_EXACT';
-export const setNewIngredientPopupExact = boolean => ({
-	type: 'SET_NEW_INGREDIENT_POPUP_EXACT',
-	boolean
-});
-
 export const SET_NEW_INGREDIENT_POPUP_LOADING = 'SET_NEW_INGREDIENT_POPUP_LOADING';
 export const setNewIngredientPopupLoading = boolean => ({
 	type: 'SET_NEW_INGREDIENT_POPUP_LOADING',

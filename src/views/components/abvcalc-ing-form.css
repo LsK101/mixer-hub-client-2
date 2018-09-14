@@ -27,6 +27,22 @@
 	background-color: #232323;
 }
 
+.abvcalc-ing-exact-popup-inner {
+	position: absolute;
+	padding: 20px;
+	top: 50%;
+	left: 50%;
+	margin-top: -258px;
+	margin-left: -132px;
+	height: 516px;
+	width: 265px;
+	z-index: 5;
+	border: 1px	solid #00aeff;
+	border-radius: 3px;
+	clear: both;
+	background-color: #232323;
+}
+
 .abvcalc-ing-name-input,
 .abvcalc-ing-abv-input,
 .abvcalc-ing-parts-input {
