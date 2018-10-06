@@ -9,7 +9,11 @@ import {setRecipeData,
         setManageLoading,
         changeSearchInput,
         changeSearchQuery,
-        changeSortMethod} from '../actions/manage-recipes';
+        changeSortMethod,
+        changeRecipeToDelete,
+        setConfirmDeletePopup} from '../actions/manage-recipes';
+
+import DeleteRecipes from './components/delete-confirm';
 
 export class ManageRecipes extends Component {
   componentWillMount() {
@@ -76,6 +80,40 @@ export class ManageRecipes extends Component {
     this.props.dispatch(changeSortMethod(event.target.value));
   }
 
+  setRecipeToBeDeleted(recipe) {
+    this.props.dispatch(changeRecipeToDelete(recipe));
+    this.props.dispatch(setConfirmDeletePopup(true));
+  }
+
+  hideDeleteConfirmation() {
+    this.props.dispatch(setConfirmDeletePopup(false));
+  }
+
+  deleteRecipe() {
+    fetch(`${API_BASE_URL}/newrecipes/delete`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${this.props.authToken}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "id": this.props.deleteRecipeID,
+        "username": this.props.currentUser,
+      })
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(json => {
+      alert('Recipe deleted successfully.');
+      return this.getRecipeDatabase();
+    })
+    .catch((err) => {
+      return alert(err);
+    });
+  }
+
   render() {
     if (this.props.currentUser === null) {
       return (
@@ -97,6 +135,10 @@ export class ManageRecipes extends Component {
     }
     return (
       <div className="row">
+
+        {this.props.deleteConfirmPopup ?
+          <DeleteRecipes/> :
+          null }
 
         <h1>Manage Recipes</h1>
 
@@ -177,7 +219,8 @@ export class ManageRecipes extends Component {
               if (simpleMode === true) {
                 return <div key={index} className="browse-recipe-container col-12">
                         <button className="manage-edit-button">Edit</button>
-                        <button className="manage-delete-button">Delete</button>
+                        <button className="manage-delete-button"
+                          onClick={this.setRecipeToBeDeleted.bind(this,recipe)}>Delete</button>
                         <br/>
                         <span><b>{recipeName}</b></span>
                         <br/> 
@@ -206,7 +249,8 @@ export class ManageRecipes extends Component {
               else {
                 return <div key={index} className="browse-recipe-container col-12">
                         <button className="manage-edit-button">Edit</button>
-                        <button className="manage-delete-button">Delete</button>
+                        <button className="manage-delete-button"
+                          onClick={this.setRecipeToBeDeleted.bind(this,recipe)}>Delete</button>
                         <br/>
                         <span><b>{recipeName}</b></span>
                         <br/> 
@@ -270,11 +314,14 @@ export class ManageRecipes extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.auth.currentUser,
+  authToken: state.auth.authToken,
   sort: state.manageRecipes.sort,
   searchInput: state.manageRecipes.searchInput,
   searchQuery: state.manageRecipes.searchQuery,
   manageLoading: state.manageRecipes.loading,
-  recipeData: state.manageRecipes.recipeData
+  recipeData: state.manageRecipes.recipeData,
+  deleteRecipeID: state.manageRecipes.deleteRecipeID,
+  deleteConfirmPopup: state.manageRecipes.deleteConfirmPopup
 });
 
 export default connect(mapStateToProps)(ManageRecipes);

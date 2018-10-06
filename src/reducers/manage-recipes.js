@@ -5,7 +5,10 @@ const initialState = {
   searchInput: '',
   searchQuery: '',
   sort: 'Recipe Name A-Z',
-  recipeData: []
+  recipeData: [],
+  deleteRecipeID: null,
+  deleteConfirmPopup: false,
+  deleteLoading: false
 }
 
 export const manageRecipesReducer = (state=initialState, action) => {
@@ -18,6 +21,11 @@ export const manageRecipesReducer = (state=initialState, action) => {
   	return Object.assign({}, state, {
   		loading: action.boolean
   	});
+  }
+  else if (action.type === actions.SET_DELETE_LOADING) {
+    return Object.assign({}, state, {
+      deleteLoading: action.boolean
+    });
   }
   else if (action.type === actions.CHANGE_SEARCH_INPUT) {
     return Object.assign({}, state, {
@@ -32,6 +40,16 @@ export const manageRecipesReducer = (state=initialState, action) => {
   else if (action.type === actions.CHANGE_SORT_METHOD) {
     return Object.assign({}, state, {
       sort: action.sortMethod
+    });
+  }
+  else if (action.type === actions.CHANGE_RECIPE_TO_DELETE) {
+    return Object.assign({}, state, {
+      deleteRecipeID: action.recipe.id
+    });
+  }
+  else if (action.type === actions.SET_CONFIRM_DELETE_POPUP) {
+    return Object.assign({}, state, {
+      deleteConfirmPopup: action.boolean
     });
   }
 	return state;

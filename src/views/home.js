@@ -49,6 +49,7 @@ export default class Home extends Component {
         <div className="col-12">
           <h2>Changelog</h2>
           <ul className="changelog-ul">
+            <li><b>[10/06/2018]</b> Recipes can now be deleted from recipe manager.</li>
             <li><b>[09/14/2018]</b> Added keyword search to recipe browser.</li>
             <li><b>[09/14/2018]</b> Added sorting method to recipe browser, changed recipe creator layout.</li>
             <li><b>[08/15/2018]</b> Recipe database now browsable.</li>
@@ -70,7 +71,7 @@ export default class Home extends Component {
             <li>- <b>[Browse Recipes]</b> show minimal recipe info, make recipes clickable to show more data</li>
             <li>- <b>[Browse Recipes]</b> ratings system</li>
             <li>- <b>[Browse Recipes]</b> commenting system</li>
-            <li>- <b>[Manage Recipes]</b> main functionality</li>
+            <li>- <b>[Manage Recipes]</b> edit recipes</li>
           </ul>
         </div>
       </div>

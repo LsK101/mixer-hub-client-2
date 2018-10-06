@@ -1,0 +1,64 @@
+.login-popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: 3;
+}
+
+.delete-popup-inner {
+	position: absolute;
+	padding: 20px;
+	top: 50%;
+	left: 50%;
+	margin-top: -3.5em;
+	margin-left: -10em;
+	height: 7em;
+	width: 20em;
+	z-index: 5;
+	border: 1px	solid #00aeff;
+	border-radius: 3px;
+	clear: both;
+	background-color: #232323;
+	text-align: center;
+}
+
+.delete-confirm-cancel-button {
+	margin-top: 22px;
+	display: inline-block;
+	border-radius: 3px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 16px;
+	color: #00aeff;
+	background-color: transparent;
+	border: 1px solid #00aeff;
+	padding: 5px;
+	float: left;
+}
+
+.delete-confirm-delete-button {
+	margin-top: 22px;
+	display: inline-block;
+	border-radius: 3px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 16px;
+	color: #ff3030;
+	background-color: transparent;
+	border: 1px solid #ff3030;
+	padding: 5px;
+	float: right;
+}
+
+.delete-loading {
+	float: right;
+	height: 1.75em;
+	margin-top: 1.375em;
+	margin-right: 1em;
+	display: inline-block;
+	padding: 5px;
+}

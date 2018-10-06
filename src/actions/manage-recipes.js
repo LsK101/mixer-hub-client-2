@@ -10,6 +10,12 @@ export const setManageLoading = boolean => ({
 	boolean
 });
 
+export const SET_DELETE_LOADING = 'SET_DELETE_LOADING';
+export const setDeleteLoading = boolean => ({
+	type: 'SET_DELETE_LOADING',
+	boolean
+});
+
 export const CHANGE_SEARCH_INPUT = 'CHANGE_SEARCH_INPUT';
 export const changeSearchInput = searchInput => ({
 	type: 'CHANGE_SEARCH_INPUT',
@@ -26,4 +32,16 @@ export const CHANGE_SORT_METHOD = 'CHANGE_SORT_METHOD';
 export const changeSortMethod = sortMethod => ({
 	type: 'CHANGE_SORT_METHOD',
 	sortMethod
+});
+
+export const CHANGE_RECIPE_TO_DELETE = 'CHANGE_RECIPE_TO_DELETE';
+export const changeRecipeToDelete = recipe => ({
+	type: 'CHANGE_RECIPE_TO_DELETE',
+	recipe
+});
+
+export const SET_CONFIRM_DELETE_POPUP = 'SET_CONFIRM_DELETE_POPUP';
+export const setConfirmDeletePopup = boolean => ({
+	type: 'SET_CONFIRM_DELETE_POPUP',
+	boolean
 });
