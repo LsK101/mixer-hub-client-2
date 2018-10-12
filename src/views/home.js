@@ -49,6 +49,7 @@ export default class Home extends Component {
         <div className="col-12">
           <h2>Changelog</h2>
           <ul className="changelog-ul">
+            <li><b>[10/12/2018]</b> Ingredients now editable in recipe creator.</li>
             <li><b>[10/06/2018]</b> Recipes can now be deleted from recipe manager.</li>
             <li><b>[09/14/2018]</b> Added keyword search to recipe browser.</li>
             <li><b>[09/14/2018]</b> Added sorting method to recipe browser, changed recipe creator layout.</li>
@@ -64,7 +65,6 @@ export default class Home extends Component {
             <li>- <b>[Dashboard]</b> main functionality</li>
             <li>- <b>[Create Recipe / ABV Calculator]</b> confirmation dialog when clearing recipes or deleting ingredients</li>
             <li>- <b>[Create Recipe / ABV Calculator]</b> warning dialog that switching modes will clear recipe</li>
-            <li>- <b>[Create Recipe / ABV Calculator]</b> edit individual ingredients</li>
             <li>- <b>[Create Recipe / ABV Calculator]</b> add recipe photo</li>
             <li>- <b>[Create Recipe / ABV Calculator]</b> add recipe description</li>
             <li>- <b>[Browse Recipes]</b> implement page system</li>
