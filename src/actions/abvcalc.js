@@ -10,6 +10,18 @@ export const setNewIngredientPopup = boolean => ({
 	boolean
 });
 
+export const SET_EDIT_INGREDIENT_POPUP = 'SET_EDIT_INGREDIENT_POPUP';
+export const setEditIngredientPopup = boolean => ({
+	type: 'SET_EDIT_INGREDIENT_POPUP',
+	boolean
+});
+
+export const SET_EDIT_INGREDIENT_INDEX = 'SET_EDIT_INGREDIENT_INDEX';
+export const setEditIngredientIndex = index => ({
+	type: 'SET_EDIT_INGREDIENT_INDEX',
+	index
+});
+
 export const SET_NEW_INGREDIENT_POPUP_LOADING = 'SET_NEW_INGREDIENT_POPUP_LOADING';
 export const setNewIngredientPopupLoading = boolean => ({
 	type: 'SET_NEW_INGREDIENT_POPUP_LOADING',
@@ -20,6 +32,13 @@ export const ADD_NEW_INGREDIENT = 'ADD_NEW_INGREDIENT';
 export const addNewIngredient = newIngredient => ({
 	type: 'ADD_NEW_INGREDIENT',
 	newIngredient
+});
+
+export const EDIT_INGREDIENT = 'EDIT_INGREDIENT';
+export const editIngredient = (editedIngredient,index) => ({
+	type: 'EDIT_INGREDIENT',
+	editedIngredient,
+	index
 });
 
 export const DELETE_INGREDIENT = 'DELETE_INGREDIENT';

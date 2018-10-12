@@ -30,7 +30,7 @@ export class ABVCalcIngredientForm extends Component {
               <br/>
               {this.props.loading ?
                 <img className="abvcalc-ing-loading" src={LoadingGif} alt="loading" /> :
-                <button className="abvcalc-ing-add-button" type="submit">Add Ingredient</button> }
+                <button className="abvcalc-ing-add-button" type="submit">{this.props.addEdit} Ingredient</button> }
                 <button className="abvcalc-ing-cancel-button" type="button" onClick={this.props.closePopup}>Cancel</button>
             </form>
           </div>
@@ -70,7 +70,7 @@ export class ABVCalcIngredientForm extends Component {
               <br/>
               {this.props.loading ?
                 <img className="abvcalc-ing-loading" src={LoadingGif} alt="loading" /> :
-                <button className="abvcalc-ing-add-button" type="submit">Add Ingredient</button> }
+                <button className="abvcalc-ing-add-button" type="submit">{this.props.addEdit} Ingredient</button> }
                 <button className="abvcalc-ing-cancel-button" type="button" onClick={this.props.closePopup}>Cancel</button>
             </form>
           </div>

@@ -3,6 +3,8 @@ import * as actions from '../actions/abvcalc';
 const initialState = {
   simpleMode: true,
 	showNewIngredientPopup: false,
+  showEditIngredientPopup: false,
+  editIndex: null,
   showNewIngredientPopupExact: false,
   addIngredientLoading: false,
   ingredients: [],
@@ -17,6 +19,16 @@ export const abvCalcReducer = (state=initialState, action) => {
       showNewIngredientPopup: action.boolean
     });
   }
+  else if (action.type === actions.SET_EDIT_INGREDIENT_POPUP) {
+    return Object.assign({}, state, {
+      showEditIngredientPopup: action.boolean
+    });
+  }
+  else if (action.type === actions.SET_EDIT_INGREDIENT_INDEX) {
+    return Object.assign({}, state, {
+      editIndex: action.index
+    });
+  }
   else if (action.type === actions.SET_NEW_INGREDIENT_POPUP_LOADING) {
     return Object.assign({}, state, {
       addIngredientLoading: action.boolean
@@ -25,6 +37,15 @@ export const abvCalcReducer = (state=initialState, action) => {
   else if (action.type === actions.ADD_NEW_INGREDIENT) {
     return Object.assign({}, state, {
       ingredients: [...state.ingredients, action.newIngredient]
+    });
+  }
+  else if (action.type === actions.EDIT_INGREDIENT) {
+    let ingredients = state.ingredients;
+    let editedIngredient = action.editedIngredient;
+    let editedIndex = action.index.index;
+    ingredients.splice(editedIndex,1,editedIngredient);
+    return Object.assign({}, state, {
+      ingredients: ingredients
     });
   }
   else if (action.type === actions.DELETE_INGREDIENT) {

@@ -245,9 +245,10 @@ export class ABVCalc extends Component {
         <ABVCalcIngredientsList />
         {this.props.showNewIngredientPopup ? // CONDITIONAL: INGREDIENT POPUP IF STATEMENT
           <ABVCalcIngredientForm
+            addEdit="Add"
             simpleMode={this.props.simpleMode} 
             loading={this.props.addIngredientLoading}
-            addIngredient={values => this.addIngredient(values)} 
+            addIngredient={values => this.addIngredient(values)}
             closePopup={this.hideIngredientPopup.bind(this)} /> :
             null }
       </div>
